@@ -39,8 +39,7 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 		
 		super.init();
 		
-		String module=System.getenv("campaignfinisher");
-		if(module!=null&&module.equals("1")) {
+
 		
 
 			try {
@@ -78,7 +77,7 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 				log.error(className + " RESTART FP-CampaignFinisher MODULE ");
 			}
 
-		}
+		
 	}
 
 	@Override

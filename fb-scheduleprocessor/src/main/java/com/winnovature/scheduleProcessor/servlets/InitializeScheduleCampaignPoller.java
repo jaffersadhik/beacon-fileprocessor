@@ -25,8 +25,7 @@ public class InitializeScheduleCampaignPoller extends GenericServlet implements 
 	public void init() throws ServletException {
 		super.init();
 		
-		String module=System.getenv("scheduleprocessor");
-		if(module!=null&&module.equals("1")) {
+	
 			
 
 			try {
@@ -47,7 +46,7 @@ public class InitializeScheduleCampaignPoller extends GenericServlet implements 
 				log.error(className + " RESTART THIS MODULE ");
 			}
 
-		}
+		
 		
 	}
 

@@ -42,9 +42,7 @@ public class InitializeConsumersServlet extends GenericServlet implements Servle
 	
 	public void init() throws ServletException {
 		super.init();
-		
-		String module=System.getenv("handoverstage");
-		if(module!=null&&module.equals("1")) {
+
 	
 
 			try {
@@ -91,7 +89,7 @@ public class InitializeConsumersServlet extends GenericServlet implements Servle
 				log.error(className + "[init]  Exception:", e);
 			}
 
-		}
+		
 	}
 
 }

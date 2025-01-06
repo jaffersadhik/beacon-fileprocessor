@@ -47,8 +47,7 @@ public class InitializePoller extends GenericServlet implements Servlet {
 	public void init() throws ServletException {
 		super.init();
 		
-		String module=System.getenv("groupsprocessor");
-		if(module!=null&&module.equals("1")) {
+	
 
 
 			try {
@@ -155,7 +154,7 @@ public class InitializePoller extends GenericServlet implements Servlet {
 				log.error(className + " RESTART FP-GroupsProcessor MODULE ");
 			}
 
-		}
+		
 	}
 
 	@Override

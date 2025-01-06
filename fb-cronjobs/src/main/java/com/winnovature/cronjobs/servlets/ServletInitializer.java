@@ -29,9 +29,6 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 	public void init() throws ServletException {
 		super.init();
 		
-		String module=System.getenv("cronjobs");
-		if(module!=null&&module.equals("1")) {
-		
 
 
 			try {
@@ -61,7 +58,7 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 			}
 
 
-		}
+		
 	}
 
 	@Override

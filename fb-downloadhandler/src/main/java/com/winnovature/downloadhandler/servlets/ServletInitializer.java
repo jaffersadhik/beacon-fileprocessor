@@ -34,8 +34,7 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 		super.init();
 		
 		
-		String module=System.getenv("downloadhandler");
-		if(module!=null&&module.equals("1")) {
+
 		
 
 			try {
@@ -68,7 +67,7 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 				log.error(className + " RESTART FP-DownloadHandler MODULE ");
 			}
 
-		}
+		
 	}
 
 	@Override

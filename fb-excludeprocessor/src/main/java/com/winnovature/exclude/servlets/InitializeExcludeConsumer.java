@@ -41,9 +41,7 @@ public class InitializeExcludeConsumer extends GenericServlet implements Servlet
 	public void init() throws ServletException {
 		super.init();
 		
-		String module=System.getenv("excludeprocessor");
-		if(module!=null&&module.equals("1")) {
-	
+
 
 			try {
 				prop = ExcludeProcessorPropertiesTon.getInstance()
@@ -90,7 +88,7 @@ public class InitializeExcludeConsumer extends GenericServlet implements Servlet
 				log.error(className + "[init]  Exception:", e);
 			}
 
-		}
+		
 	}
 
 }

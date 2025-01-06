@@ -45,9 +45,7 @@ public class SplitStageServlet extends GenericServlet implements Servlet {
 
 		super.init();
 
-		String module=System.getenv("splitstage");
-		if(module!=null&&module.equals("1")) {
-	
+		
 
 			try {
 
@@ -96,7 +94,7 @@ public class SplitStageServlet extends GenericServlet implements Servlet {
 				log.debug(className + methodName + " end..");
 			}
 
-		}
+		
 		
 	}
 }
