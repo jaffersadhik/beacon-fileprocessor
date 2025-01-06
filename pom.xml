@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>beacon-fileprocessor</groupId>
+  <artifactId>beacon-fileprocessor</artifactId>
+  <version>1.0</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>fb-utils</module>
+  	<module>fb-inmemoryrefresh</module>
+  	<module>fb-fileupload</module>
+  	<module>fb-fileparser</module>
+  	<module>fb-initialstage</module>
+  	<module>fb-splitstage</module>
+  	<module>fb-handoverstage</module>
+  	<module>fb-campaignfinisher</module>
+  	<module>fb-scheduleprocessor</module>
+  	<module>fb-groupsprocessor</module>
+  	<module>fb-excludeprocessor</module>
+  	<module>fb-downloadhandler</module>
+  	<module>fb-dltfileprocessor</module>
+  	<module>fb-cronjobs</module>
+  	<module>docker-fileprocessor</module>
+  	<module>properties</module>
+  	<module>beaconlib</module>
+  </modules>
+</project>
