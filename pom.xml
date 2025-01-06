@@ -5,6 +5,7 @@
   <version>1.0</version>
   <packaging>pom</packaging>
   <modules>
+	<module>fb-logger</module>
   	<module>fb-utils</module>
   	<module>fb-inmemoryrefresh</module>
   	<module>fb-fileupload</module>
@@ -19,10 +20,9 @@
   	<module>fb-downloadhandler</module>
   	<module>fb-dltfileprocessor</module>
   	<module>fb-cronjobs</module>
-  	<module>docker-fileprocessor</module>
-  	<module>properties</module>
   	<module>beaconlib</module>
-  	<module>fb-logger</module>
+  	<module>properties</module>
+  	<module>docker-fileprocessor</module>
   </modules>
   
   
