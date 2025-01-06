@@ -26,7 +26,7 @@
  								<fileset dir="../properties/">
                                     <include name="**/*"/> <!-- Include all files -->
                                 </fileset>
-                                <fileset file="../beaconlib/target/beaconlib-1.0-jar-with-dependencies.jar"/>
+                                <fileset file="../beaconlib/target/beaconlib-1.0.jar"/>
                                 <fileset file="../fb-campaignfinisher/target/fb-campaignfinisher-1.0.war"/>
                                 <fileset file="../fb-cronjobs/target/fb-cronjobs-1.0.war"/>
                                 <fileset file="../fb-dltfileprocessor/target/fb-dltfileprocessor-1.0.war"/>
