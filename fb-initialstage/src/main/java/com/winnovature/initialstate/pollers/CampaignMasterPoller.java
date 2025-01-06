@@ -11,6 +11,7 @@ import org.apache.commons.logging.LogFactory;
 import com.winnovature.initialstate.daos.CampaignMasterDAO;
 import com.winnovature.initialstate.singletons.InitialStagePropertiesTon;
 import com.winnovature.initialstate.utils.Constants;
+import com.winnovature.logger.InitialStageLog;
 import com.winnovature.utils.singletons.ConfigParamsTon;
 import com.winnovature.utils.utils.HeartBeatMonitoring;
 import com.winnovature.utils.utils.Utility;
@@ -60,9 +61,11 @@ public class CampaignMasterPoller extends Thread {
 			configMap = (HashMap<String, String>) ConfigParamsTon.getInstance().getConfigurationFromconfigParams();
 			fileSplitQueueName = configMap.get(com.winnovature.utils.utils.Constants.FILE_SPLIT_QUEUE_NAME);
 			maxRetryCount = configMap.get(com.winnovature.utils.utils.Constants.MAX_RETRY_COUNT);
+		
 			if (StringUtils.isBlank(fileSplitQueueName)) {
 				throw new Exception(" FileSplitQ name not found ");
 			}
+			
 		} catch (Exception e) {
 			throw e;
 		}
@@ -70,6 +73,8 @@ public class CampaignMasterPoller extends Thread {
 		if(StringUtils.isBlank(maxRetryCount)) {
 			maxRetryCount = "5";
 		}
+
+		InitialStageLog.getInstance().debug(className+" poll() : fileSplitQueueName : "+fileSplitQueueName+ " maxRetryCount : "+maxRetryCount);
 
 		try {
 			// get campaigns data and send to FileSplitQ

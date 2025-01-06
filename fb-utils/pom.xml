@@ -97,8 +97,8 @@
 			<version>1.0</version>
 		</dependency>
 		<dependency>
-			<groupId>beacon</groupId>
-			<artifactId>common-errorlog</artifactId>
+			<groupId>beacon-fileprocessor</groupId>
+			<artifactId>fb-logger</artifactId>
 			<version>1.0</version>
 		</dependency>
 	</dependencies>

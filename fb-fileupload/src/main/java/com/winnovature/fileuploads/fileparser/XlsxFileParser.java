@@ -35,9 +35,9 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
-import com.itextos.beacon.errorlog.FileUploadLog;
 import com.winnovature.fileuploads.utils.Constants;
 import com.winnovature.fileuploads.utils.Utility;
+import com.winnovature.logger.FileUploadLog;
 
 public class XlsxFileParser implements FileParser {
 

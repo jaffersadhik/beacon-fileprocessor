@@ -7,6 +7,7 @@ import org.apache.commons.logging.LogFactory;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import com.winnovature.initialstate.singletons.RedisConnectionTon;
+import com.winnovature.logger.InitialStageLog;
 
 import redis.clients.jedis.Jedis;
 
@@ -55,6 +56,8 @@ public class FileSender {
 						+ "] to Queue[" + queueName + "]");
 				log.error(className + methodName
 						+ " Exception in sendToQueue...", e);
+				
+				InitialStageLog.getInstance().error(className+" sendToFileQueue error ",e);
 			
 			
 		} finally {
@@ -66,6 +69,9 @@ public class FileSender {
 					+ (sent == true ? "Success." : "Failed."));
 			log.debug(className + methodName + " End.");
 		}
+		
+		InitialStageLog.getInstance().error(className+" sendToFileQueue Status sent "+sent);
+
 		return sent;
 	}
 

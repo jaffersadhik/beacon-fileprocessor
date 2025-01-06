@@ -23,14 +23,12 @@ import javax.servlet.http.Part;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
-import com.itextos.beacon.errorlog.FileUploadLog;
 import com.winnovature.fileuploads.services.FileReadService;
 import com.winnovature.fileuploads.utils.Constants;
 import com.winnovature.fileuploads.utils.Utility;
 import com.winnovature.fileuploads.utils.ZipHandler;
+import com.winnovature.logger.FileUploadLog;
 import com.winnovature.utils.singletons.ConfigParamsTon;
 import com.winnovature.utils.utils.JsonUtility;
 

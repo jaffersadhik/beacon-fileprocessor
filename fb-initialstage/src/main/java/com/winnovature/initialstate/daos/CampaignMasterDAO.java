@@ -21,6 +21,7 @@ import com.itextos.beacon.inmemdata.account.UserInfo;
 import com.winnovature.initialstate.singletons.InitialStagePropertiesTon;
 import com.winnovature.initialstate.utils.Constants;
 import com.winnovature.initialstate.utils.FileSender;
+import com.winnovature.logger.InitialStageLog;
 import com.winnovature.utils.singletons.ConnectionFactoryForCMDB;
 import com.winnovature.utils.utils.JsonUtility;
 import com.winnovature.utils.utils.UserDetails;
@@ -138,7 +139,11 @@ public class CampaignMasterDAO {
 			if(!foundData) {
 				if (hrtBtLog.isDebugEnabled())
 					hrtBtLog.debug(className + methodName + " No request found with matching criteria, sleeping for "+sleepTime+" milli seconds.");
+				InitialStageLog.getInstance().debug(className+" poll() : sql : "+sql+ "\n  No request found with matching criteria, sleeping for "+sleepTime+" milli seconds. : ");
+
 				consumerSleep(sleepTime);
+				
+
 			}
 			
 			while(requestsList.size() > 0) {
@@ -203,6 +208,8 @@ public class CampaignMasterDAO {
 
 		String methodName = "[updateCampaignStatus]";
 		
+		InitialStageLog.getInstance().debug(className+" updateCampaignStatus() : status : "+status+" reason : "+reason+" : campInfo : "+campInfo);
+
 		StringBuilder campaign_master_sql = new StringBuilder("update campaign_master SET status = ? ");
 		if(status.equalsIgnoreCase(Constants.PROCESS_STATUS_FAILED)) {
 			campaign_master_sql.append(", reason=? ");

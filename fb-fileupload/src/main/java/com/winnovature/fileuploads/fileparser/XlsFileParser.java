@@ -19,9 +19,9 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
-import com.itextos.beacon.errorlog.FileUploadLog;
 import com.winnovature.fileuploads.utils.Constants;
 import com.winnovature.fileuploads.utils.Utility;
+import com.winnovature.logger.FileUploadLog;
 
 public class XlsFileParser implements FileParser {
 

@@ -9,7 +9,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.itextos.beacon.errorlog.FileUploadLog;
+import com.winnovature.logger.FileUploadLog;
 import com.winnovature.utils.daos.GenericDao;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 import com.winnovature.utils.singletons.RedisConnectionFactory;

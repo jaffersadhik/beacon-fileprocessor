@@ -10,12 +10,12 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.itextos.beacon.errorlog.FileUploadLog;
 import com.winnovature.fileuploads.fileparser.CsvReaderFileParser;
 import com.winnovature.fileuploads.fileparser.XlsFileParser;
 import com.winnovature.fileuploads.fileparser.XlsxFileParser;
 import com.winnovature.fileuploads.utils.Constants;
 import com.winnovature.fileuploads.utils.Utility;
+import com.winnovature.logger.FileUploadLog;
 
 public class FileReadService implements Callable<Map<String, Object>> {
 	static Log log = LogFactory.getLog(Constants.FileUploadLogger);

@@ -14,6 +14,7 @@ import org.apache.commons.logging.LogFactory;
 import com.winnovature.initialstate.pollers.CampaignGroupsPoller;
 import com.winnovature.initialstate.pollers.CampaignMasterPoller;
 import com.winnovature.initialstate.utils.Constants;
+import com.winnovature.logger.InitialStageLog;
 
 public class InitializePoller extends GenericServlet implements Servlet {
 
@@ -28,9 +29,8 @@ public class InitializePoller extends GenericServlet implements Servlet {
 		super.init();
 		
 		
-		String module=System.getenv("initialstage");
-		if(module!=null&&module.equals("1")) {
-		
+	
+		InitialStageLog.getInstance().debug(className+" : init()  " );
 
 			try {
 
@@ -41,6 +41,9 @@ public class InitializePoller extends GenericServlet implements Servlet {
 				campaignMasterPoller = new CampaignMasterPoller("CampaignMasterPoller");
 				campaignMasterPoller.setName("CampaignMasterPoller");
 				campaignMasterPoller.start();
+				
+				InitialStageLog.getInstance().debug(className+" : campaignMasterPoller.start()  " );
+
 
 				if (log.isDebugEnabled())
 					log.debug(className + " CampaignMasterPoller started.");
@@ -48,6 +51,8 @@ public class InitializePoller extends GenericServlet implements Servlet {
 				campaignGroupsPoller = new CampaignGroupsPoller("CampaignGroupsPoller");
 				campaignGroupsPoller.setName("CampaignGroupsPoller");
 				campaignGroupsPoller.start();
+
+				InitialStageLog.getInstance().debug(className+" : campaignGroupsPoller.start()  " );
 
 				if (log.isDebugEnabled())
 					log.debug(className + " CampaignGroupsPoller started.");
@@ -57,7 +62,7 @@ public class InitializePoller extends GenericServlet implements Servlet {
 				log.error(className + " RESTART FP-InitialStage MODULE ");
 			}
 
-		}
+	
 		
 	}
 
