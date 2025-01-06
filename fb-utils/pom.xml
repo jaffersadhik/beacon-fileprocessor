@@ -7,98 +7,15 @@
   </parent>
   <artifactId>fb-utils</artifactId>
   
-	<dependencies>
-	
+<dependencies>
 		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-			<version>2.3.0</version>
-		</dependency>
-
-		<dependency>
-		  <groupId>com.aventrix.jnanoid</groupId>
-		  <artifactId>jnanoid</artifactId>
-		  <version>2.0.0</version>
-		</dependency>
-		
-	
-		<dependency>
-			<groupId>commons-configuration</groupId>
-			<artifactId>commons-configuration</artifactId>
-			<version>1.6</version>
-		</dependency>
-		<dependency>
-			<groupId>beacon</groupId>
-			<artifactId>common-commondbpool</artifactId>
-			<version>1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.8.5</version>
-		</dependency>
-		
-		
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>4.1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>4.1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.opencsv</groupId>
-			<artifactId>opencsv</artifactId>
-			<version>2.3</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.2</version>
-		</dependency>
-		<dependency>
-			<groupId>beacon</groupId>
-			<artifactId>common-utility</artifactId>
-			<version>1.0</version>
-			
-		</dependency>
-		<dependency>
-			<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
-			<version>3.6.0</version>
-		</dependency>
-		<dependency>
-			<groupId>beacon</groupId>
-	       	<artifactId>platform-messagetool</artifactId>
-	       	<version>1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>beacon</groupId>
-			<artifactId>common-messageidentifier</artifactId>
-			<version>1.0</version>
-		</dependency>
-		<dependency>
-            <groupId>beacon</groupId>
-            <artifactId>http-interfaceutil</artifactId>
-            <version>1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>beacon</groupId>
-			<artifactId>inmemory-data</artifactId>
-			<version>1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>beacon</groupId>
-			<artifactId>inmemory-data</artifactId>
+			<groupId>beacon-fileprocessor</groupId>
+			<artifactId>fb-logger</artifactId>
 			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>beacon-fileprocessor</groupId>
-			<artifactId>fb-logger</artifactId>
+			<artifactId>thirtypartyjar</artifactId>
 			<version>1.0</version>
 		</dependency>
 	</dependencies>
