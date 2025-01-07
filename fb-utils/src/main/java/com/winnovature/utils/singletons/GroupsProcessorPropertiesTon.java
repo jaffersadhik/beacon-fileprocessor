@@ -1,4 +1,4 @@
-package com.winnovature.groupsprocessor.singletons;
+package com.winnovature.utils.singletons;
 
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;
@@ -6,12 +6,11 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.winnovature.groupsprocessor.utils.Constants;
-import com.winnovature.utils.singletons.GlobalPropertiesTon;
+import com.winnovature.utils.utils.Constants;
 
 public class GroupsProcessorPropertiesTon {
 
-	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+	static Log log = LogFactory.getLog(Constants.UtilsLogger);
 
 	private static GroupsProcessorPropertiesTon singleton = new GroupsProcessorPropertiesTon();
 	private PropertiesConfiguration propConf;

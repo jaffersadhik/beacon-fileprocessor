@@ -1,4 +1,4 @@
-package com.winnovature.groupsprocessor.pollers;
+package com.winnovature.initialstate.pollers;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,16 +8,16 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.winnovature.groupsprocessor.daos.GroupsMasterDAO;
-import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
-import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.initialstate.daos.GroupsMasterDAO;
 import com.winnovature.utils.singletons.ConfigParamsTon;
+import com.winnovature.utils.singletons.GroupsProcessorPropertiesTon;
+import com.winnovature.utils.utils.Constants;
 import com.winnovature.utils.utils.HeartBeatMonitoring;
 import com.winnovature.utils.utils.Utility;
 
 public class GroupsMasterPoller extends Thread {
 
-	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+	static Log log = LogFactory.getLog(Constants.UtilsLogger);
 	private static final String className = "[GroupsMasterPoller]";
 	private String threadName = null;
 

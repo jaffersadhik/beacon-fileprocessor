@@ -12,13 +12,13 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.winnovature.dltfileprocessor.daos.GenericDAO;
 import com.winnovature.dltfileprocessor.fileparser.CsvReaderFileParser;
 import com.winnovature.dltfileprocessor.fileparser.XlsFileParser;
 import com.winnovature.dltfileprocessor.fileparser.XlsxFileParser;
-import com.winnovature.dltfileprocessor.singletons.DltFileProcessorPropertiesTon;
-import com.winnovature.dltfileprocessor.utils.Constants;
 import com.winnovature.dltfileprocessor.utils.Utility;
+import com.winnovature.utils.daos.dltfileprocessor.GenericDAO;
+import com.winnovature.utils.singletons.DltFileProcessorPropertiesTon;
+import com.winnovature.utils.utils.Constants;
 
 public class FileReadService implements Callable<Map<String, Object>> {
 	static Log log = LogFactory.getLog(Constants.FileUploadLogger);

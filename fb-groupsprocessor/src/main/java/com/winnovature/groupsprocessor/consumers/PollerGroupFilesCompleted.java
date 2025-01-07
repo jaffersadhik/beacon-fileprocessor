@@ -9,8 +9,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.groupsprocessor.daos.UpdateGroupFilesCompletedDAO;
-import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
-import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.utils.singletons.GroupsProcessorPropertiesTon;
+import com.winnovature.utils.utils.Constants;
 import com.winnovature.utils.utils.HeartBeatMonitoring;
 import com.winnovature.utils.utils.Utility;
 

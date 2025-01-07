@@ -1,4 +1,4 @@
-package com.winnovature.groupsprocessor.daos;
+package com.winnovature.initialstate.daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,6 +18,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.logger.GroupProcessorLog;
+import com.winnovature.utils.daos.CountSorter;
 import com.winnovature.utils.dtos.SplitFileData;
 import com.winnovature.utils.singletons.ConnectionFactoryForCMDB;
 import com.winnovature.utils.singletons.GroupsProcessorPropertiesTon;
@@ -26,7 +27,7 @@ import com.winnovature.utils.utils.groupprocessor.FileSender;
 
 public class GroupsMasterDAO {
 
-	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+	static Log log = LogFactory.getLog(com.winnovature.utils.utils.Constants.UtilsLogger);
 	private static final String className = "[GroupsMasterDAO]";
 	PropertiesConfiguration prop = null;
 
@@ -609,7 +610,7 @@ public class GroupsMasterDAO {
 	}
 
 }
-
+/*
 class CountSorter implements Comparator<Map<String, String>> {
 	@Override
 	public int compare(Map<String, String> o1, Map<String, String> o2) {
@@ -617,4 +618,6 @@ class CountSorter implements Comparator<Map<String, String>> {
 		Integer cnt2 = Integer.parseInt(o2.get("total"));
 		return cnt1.compareTo(cnt2);
 	}
+	
 }
+*/

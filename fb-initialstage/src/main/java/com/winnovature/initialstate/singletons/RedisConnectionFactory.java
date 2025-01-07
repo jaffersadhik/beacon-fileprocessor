@@ -7,8 +7,8 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
 import com.winnovature.initialstate.daos.GenericDAO;
-import com.winnovature.initialstate.utils.Constants;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
+import com.winnovature.utils.utils.Constants;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;

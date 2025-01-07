@@ -21,7 +21,7 @@ public class HandoverStageLog {
          String folder="/opt/jboss/wildfly/logs";
          FolderCreation.foldercreaton(folder);
          
-        String logFileNamePattern = folder+"/handover.%g.log";
+        String logFileNamePattern = folder+"/handoverstage.%g.log";
 
         Level loglevel=Level.INFO;
         

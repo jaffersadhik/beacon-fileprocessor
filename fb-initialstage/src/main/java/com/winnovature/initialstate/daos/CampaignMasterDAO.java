@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -19,10 +18,11 @@ import org.apache.commons.logging.LogFactory;
 
 import com.itextos.beacon.inmemdata.account.UserInfo;
 import com.winnovature.initialstate.singletons.InitialStagePropertiesTon;
-import com.winnovature.initialstate.utils.Constants;
 import com.winnovature.initialstate.utils.FileSender;
 import com.winnovature.logger.InitialStageLog;
+import com.winnovature.utils.daos.CountSorter;
 import com.winnovature.utils.singletons.ConnectionFactoryForCMDB;
+import com.winnovature.utils.utils.Constants;
 import com.winnovature.utils.utils.JsonUtility;
 import com.winnovature.utils.utils.UserDetails;
 
@@ -315,6 +315,7 @@ public class CampaignMasterDAO {
 
 }
 
+/*
 class CountSorter implements Comparator<Map<String, String>> {
 	@Override
 	public int compare(Map<String, String> o1, Map<String, String> o2) {
@@ -323,3 +324,4 @@ class CountSorter implements Comparator<Map<String, String>> {
 		return cnt1.compareTo(cnt2);
 	}
 }
+*/

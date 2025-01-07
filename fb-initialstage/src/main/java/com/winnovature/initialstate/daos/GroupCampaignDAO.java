@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -16,9 +15,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.initialstate.singletons.InitialStagePropertiesTon;
-import com.winnovature.initialstate.utils.Constants;
 import com.winnovature.initialstate.utils.FileSender;
+import com.winnovature.utils.daos.CountSorter;
 import com.winnovature.utils.singletons.ConnectionFactoryForCMDB;
+import com.winnovature.utils.utils.Constants;
 
 public class GroupCampaignDAO {
 
@@ -86,7 +86,7 @@ public class GroupCampaignDAO {
 				if(requestsList.containsKey(key)) {
 					List<Map<String, String>> data = requestsList.get(key);
 					data.add(campMasterMap);
-					data.sort(new CountSorter1());
+					data.sort(new CountSorter());
 				}else {
 					List<Map<String, String>> data = new ArrayList<Map<String, String>>();
 					data.add(campMasterMap);
@@ -247,7 +247,7 @@ public class GroupCampaignDAO {
 	}
 
 }
-
+/*
 class CountSorter1 implements Comparator<Map<String, String>> {
 	@Override
 	public int compare(Map<String, String> o1, Map<String, String> o2) {
@@ -256,3 +256,4 @@ class CountSorter1 implements Comparator<Map<String, String>> {
 		return cnt1.compareTo(cnt2);
 	}
 }
+*/

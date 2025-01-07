@@ -1,4 +1,4 @@
-package com.winnovature.dltfileprocessor.daos;
+package com.winnovature.utils.daos.dltfileprocessor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,10 +13,10 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.winnovature.dltfileprocessor.utils.Constants;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 import com.winnovature.utils.singletons.ConnectionFactoryForAccountsDB;
 import com.winnovature.utils.singletons.ConnectionFactoryForCMDB;
+import com.winnovature.utils.utils.Constants;
 
 public class GenericDAO {
 	static Log log = LogFactory.getLog(Constants.FileUploadLogger);

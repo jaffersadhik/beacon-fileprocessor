@@ -22,11 +22,11 @@ import com.winnovature.groupsprocessor.consumers.GroupsQConsumer;
 import com.winnovature.groupsprocessor.consumers.PollerCampaignMasterCompleted;
 import com.winnovature.groupsprocessor.consumers.PollerGroupFilesCompleted;
 import com.winnovature.groupsprocessor.consumers.PollerGroupMasterCompleted;
-import com.winnovature.groupsprocessor.pollers.GroupsMasterPoller;
-import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
-import com.winnovature.groupsprocessor.singletons.RedisConnectionTon;
-import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
+import com.winnovature.utils.singletons.GroupsProcessorPropertiesTon;
+import com.winnovature.utils.singletons.groupprocessor.RedisConnectionTon;
+import com.winnovature.utils.utils.Constants;
 
 @WebServlet(name = "InitializePoller", loadOnStartup = 1)
 public class InitializePoller extends GenericServlet implements Servlet {
@@ -35,7 +35,6 @@ public class InitializePoller extends GenericServlet implements Servlet {
 	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
 	private static final String className = "InitializePoller";
 	PropertiesConfiguration groupsProperties = null;
-	GroupsMasterPoller groupsMasterPoller = null;
 	GroupsQConsumer groupsQConsumer = null;
 	GroupsFileSplitQConsumer groupsFileSplitQConsumer = null;
 	PollerGroupFilesCompleted pollerGroupFilesCompleted = null;
@@ -49,7 +48,7 @@ public class InitializePoller extends GenericServlet implements Servlet {
 		
 	
 
-
+		GroupProcessorLog.getInstance().debug(className + " InitializePoller Servlet started...");
 			try {
 				if (log.isDebugEnabled()) {
 					log.debug(className + " InitializePoller Servlet started...");
@@ -63,10 +62,7 @@ public class InitializePoller extends GenericServlet implements Servlet {
 				}
 				// picks request from group_master/group_files tables
 				if (runGroupsPoller) {
-					groupsMasterPoller = new GroupsMasterPoller("GroupsMasterPoller");
-					groupsMasterPoller.setName("GroupsMasterPoller");
-					groupsMasterPoller.start();
-					if (log.isDebugEnabled()) {
+						if (log.isDebugEnabled()) {
 						log.debug(className + " GroupsMasterPoller started.");
 					}
 				}
@@ -84,6 +80,8 @@ public class InitializePoller extends GenericServlet implements Servlet {
 						groupsQConsumer = new GroupsQConsumer(bean, instanceId);
 						groupsQConsumer.setName("Thread" + (i + 1) + "-" + "GroupsQConsumer");
 						groupsQConsumer.start();
+						
+						GroupProcessorLog.getInstance().debug(className+" groupsQConsumer.start() "+groupsQConsumer.getName());
 						if (log.isDebugEnabled())
 							log.debug("[InitializePoller.init()] >>>>>> STARTING GroupsQConsumer" + (i + 1) + " ThreadName:"
 									+ groupsQConsumer.getName() + " bean:" + bean.getIpAddress());

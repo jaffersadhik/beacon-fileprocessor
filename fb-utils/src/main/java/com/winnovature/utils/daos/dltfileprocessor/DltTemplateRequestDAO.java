@@ -1,10 +1,9 @@
-package com.winnovature.dltfileprocessor.daos;
+package com.winnovature.utils.daos.dltfileprocessor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -18,11 +17,12 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.aventrix.jnanoid.jnanoid.NanoIdUtils;
-import com.winnovature.dltfileprocessor.singletons.DltFileProcessorPropertiesTon;
-import com.winnovature.dltfileprocessor.utils.Constants;
-import com.winnovature.dltfileprocessor.utils.FileSender;
+import com.winnovature.utils.daos.CountSorter;
 import com.winnovature.utils.singletons.ConnectionFactoryForAccountsDB;
 import com.winnovature.utils.singletons.ConnectionFactoryForCMDB;
+import com.winnovature.utils.singletons.DltFileProcessorPropertiesTon;
+import com.winnovature.utils.utils.Constants;
+import com.winnovature.utils.utils.dltfileprocessor.FileSender;
 
 public class DltTemplateRequestDAO {
 
@@ -587,13 +587,4 @@ public class DltTemplateRequestDAO {
 		}
 	}
 
-}
-
-class CountSorter implements Comparator<Map<String, String>> {
-	@Override
-	public int compare(Map<String, String> o1, Map<String, String> o2) {
-		Integer cnt1 = Integer.parseInt(o1.get("total"));
-		Integer cnt2 = Integer.parseInt(o2.get("total"));
-		return cnt1.compareTo(cnt2);
-	}
 }

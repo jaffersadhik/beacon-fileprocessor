@@ -10,8 +10,8 @@ import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.initialstate.daos.GroupCampaignDAO;
 import com.winnovature.initialstate.singletons.InitialStagePropertiesTon;
-import com.winnovature.initialstate.utils.Constants;
 import com.winnovature.utils.singletons.ConfigParamsTon;
+import com.winnovature.utils.utils.Constants;
 import com.winnovature.utils.utils.HeartBeatMonitoring;
 import com.winnovature.utils.utils.Utility;
 

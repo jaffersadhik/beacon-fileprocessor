@@ -1,4 +1,4 @@
-package com.winnovature.downloadhandler.singletons;
+package com.winnovature.utils.singletons;
 
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;
@@ -6,22 +6,21 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.winnovature.downloadhandler.utils.Constants;
-import com.winnovature.utils.singletons.GlobalPropertiesTon;
+import com.winnovature.utils.utils.Constants;
 
-public class DownloadHandlerPropertiesTon {
+public class DltFileProcessorPropertiesTon {
 
-	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
+	static Log log = LogFactory.getLog(Constants.FileUploadLogger);
 
-	private static DownloadHandlerPropertiesTon singleton = new DownloadHandlerPropertiesTon();
+	private static DltFileProcessorPropertiesTon singleton = new DltFileProcessorPropertiesTon();
 	private PropertiesConfiguration propConf;
-	static final String propertyFileLookupKey = "download.handler.properties.loc";
-	private String className = "DownloadHandlerPropertiesTon";
+	static final String propertyFileLookupKey = "dlt.file.processor.properties.loc";
+	private String className = "DltFileProcessorPropertiesTon";
 
-	private DownloadHandlerPropertiesTon() {
+	private DltFileProcessorPropertiesTon() {
 	}
 
-	public static DownloadHandlerPropertiesTon getInstance() {
+	public static DltFileProcessorPropertiesTon getInstance() {
 		return singleton;
 	}
 
@@ -55,8 +54,8 @@ public class DownloadHandlerPropertiesTon {
 				propConf = new PropertiesConfiguration(propertyFilePath);
 				propConf.setReloadingStrategy(new FileChangedReloadingStrategy());
 			} else {
-				throw new Exception("****** ERROR: EITHER IT COULD NOT FIND " + propertyFilePath
-						+ " PROPERTY OR HAVE NO VALUES ****");
+				throw new Exception(
+						"****** ERROR: EITHER IT COULD NOT FIND " + propertyFilePath + " PROPERTY OR HAVE NO VALUES ****");
 			}
 		} catch (Exception e) {
 			log.error(className + methodName + "Exception: ", e);

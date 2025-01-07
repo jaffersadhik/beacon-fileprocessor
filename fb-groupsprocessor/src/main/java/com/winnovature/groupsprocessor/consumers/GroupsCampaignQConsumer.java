@@ -12,11 +12,11 @@ import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.groupsprocessor.daos.CampaignsDAO;
 import com.winnovature.groupsprocessor.handlers.GroupsCampaignFileGenerator;
-import com.winnovature.groupsprocessor.utils.Constants;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 import com.winnovature.utils.singletons.ConfigParamsTon;
 import com.winnovature.utils.singletons.RedisConnectionFactory;
 import com.winnovature.utils.singletons.RedisConnectionTon;
+import com.winnovature.utils.utils.Constants;
 import com.winnovature.utils.utils.HeartBeatMonitoring;
 import com.winnovature.utils.utils.JsonUtility;
 import com.winnovature.utils.utils.Utility;

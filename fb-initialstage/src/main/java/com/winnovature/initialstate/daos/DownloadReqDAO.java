@@ -1,4 +1,4 @@
-package com.winnovature.downloadhandler.daos;
+package com.winnovature.initialstate.daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

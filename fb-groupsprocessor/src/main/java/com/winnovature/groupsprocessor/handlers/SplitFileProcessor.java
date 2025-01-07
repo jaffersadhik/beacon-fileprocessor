@@ -21,12 +21,12 @@ import com.itextos.beacon.commonlib.utility.mobilevalidation.MobileNumberValidat
 import com.itextos.beacon.inmemdata.account.UserInfo;
 import com.winnovature.groupsprocessor.daos.GroupRedisDAO;
 import com.winnovature.groupsprocessor.daos.GroupsMasterDAO;
-import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
-import com.winnovature.groupsprocessor.utils.Constants;
-import com.winnovature.groupsprocessor.utils.FileSender;
 import com.winnovature.groupsprocessor.utils.Utility;
+import com.winnovature.utils.singletons.GroupsProcessorPropertiesTon;
+import com.winnovature.utils.utils.Constants;
 import com.winnovature.utils.utils.MobileValidator;
 import com.winnovature.utils.utils.UserDetails;
+import com.winnovature.utils.utils.groupprocessor.FileSender;
 
 public class SplitFileProcessor {
 

@@ -17,12 +17,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.dltfileprocessor.consumers.DltFileQConsumer;
-import com.winnovature.dltfileprocessor.pollers.DltTemplateRequestCompletionPoller;
-import com.winnovature.dltfileprocessor.pollers.DltTemplateRequestPoller;
-import com.winnovature.dltfileprocessor.singletons.DltFileProcessorPropertiesTon;
-import com.winnovature.dltfileprocessor.singletons.RedisConnectionTon;
-import com.winnovature.dltfileprocessor.utils.Constants;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
+import com.winnovature.utils.singletons.DltFileProcessorPropertiesTon;
+import com.winnovature.utils.singletons.dltfileprocessor.RedisConnectionTon;
+import com.winnovature.utils.utils.Constants;
 
 @WebServlet(name = "InitializePollers", loadOnStartup = 1)
 public class InitializePollers extends GenericServlet implements Servlet {
@@ -31,9 +29,7 @@ public class InitializePollers extends GenericServlet implements Servlet {
 	static Log log = LogFactory.getLog(Constants.FileUploadLogger);
 	private static final String className = "[InitializePollers]";
 	PropertiesConfiguration dltProperties = null;
-	DltTemplateRequestPoller dltTemplateRequestPoller = null;
 	DltFileQConsumer dltFileQConsumer = null;
-	DltTemplateRequestCompletionPoller dltTemplateRequestCompletionPoller = null;
 
 	@Override
 	public void init() throws ServletException {
@@ -55,19 +51,7 @@ public class InitializePollers extends GenericServlet implements Servlet {
 				}
 				// picks request from dlt_template_request/dlt_template_files tables
 				if (runDltTemplateRequestPoller) {
-					dltTemplateRequestPoller = new DltTemplateRequestPoller("dltTemplateRequestPoller");
-					dltTemplateRequestPoller.setName("dltTemplateRequestPoller");
-					dltTemplateRequestPoller.start();
-					if (log.isDebugEnabled()) {
-						log.debug(className + " dltTemplateRequestPoller started.");
-					}
 					
-					dltTemplateRequestCompletionPoller = new DltTemplateRequestCompletionPoller();
-					dltTemplateRequestCompletionPoller.setName("DltTemplateRequestCompletionPoller");
-					dltTemplateRequestCompletionPoller.start();
-					if (log.isDebugEnabled()) {
-						log.debug(className + " DltTemplateRequestCompletionPoller started.");
-					}
 				}
 				
 				String consumersRequired = dltProperties.getString(Constants.DLT_FILE_CONSUMER_REQUIRED);

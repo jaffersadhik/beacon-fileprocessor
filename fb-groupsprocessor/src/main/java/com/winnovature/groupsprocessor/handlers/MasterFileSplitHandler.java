@@ -16,15 +16,16 @@ import com.winnovature.fileparser.factory.FileParserFactory;
 import com.winnovature.fileparser.handler.FileChopHandler;
 import com.winnovature.fileparser.interfaces.FileParser;
 import com.winnovature.groupsprocessor.daos.GroupsMasterDAO;
-import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
-import com.winnovature.groupsprocessor.singletons.RedisConnectionTon;
 import com.winnovature.groupsprocessor.singletons.RedisQueueSender;
-import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.dtos.FileDataBean;
 import com.winnovature.utils.dtos.SendSMSTypes;
 import com.winnovature.utils.dtos.SplitFileData;
 import com.winnovature.utils.dtos.TagwiseSplitFiles;
 import com.winnovature.utils.singletons.ConfigParamsTon;
+import com.winnovature.utils.singletons.GroupsProcessorPropertiesTon;
+import com.winnovature.utils.singletons.groupprocessor.RedisConnectionTon;
+import com.winnovature.utils.utils.Constants;
 import com.winnovature.utils.utils.JsonUtility;
 
 import redis.clients.jedis.Jedis;
@@ -118,6 +119,8 @@ public class MasterFileSplitHandler {
 								+ requestMap.get("gm_id") + " total:" + requestMap.get("total") + " ] Exception:",
 								fnfe);
 					}
+					GroupProcessorLog.getInstance().error(className+" : error",fnfe);
+
 					return;
 				} catch (Exception e) {
 					log.error(className + methodName
@@ -127,6 +130,8 @@ public class MasterFileSplitHandler {
 					if (e.getMessage().toLowerCase().contains(Constants.DEADLOCK_EXCEPTION_DEFAULT.toLowerCase())) {
 						deadLockFound = true;
 					}
+					GroupProcessorLog.getInstance().error(className+" : error",e);
+
 					pushBacktoGroupsQ(deadLockFound);
 					return;
 				} // end of catch block file write

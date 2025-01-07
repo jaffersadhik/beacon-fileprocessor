@@ -1,4 +1,4 @@
-package com.winnovature.dltfileprocessor.singletons;
+package com.winnovature.utils.singletons.download;
 
 import java.util.Map;
 
@@ -6,16 +6,16 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
-import com.winnovature.dltfileprocessor.daos.GenericDAO;
-import com.winnovature.dltfileprocessor.utils.Constants;
+import com.winnovature.utils.daos.download.GenericDAO;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
+import com.winnovature.utils.utils.Constants;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 public class RedisConnectionFactory {
 
-	static Log log = LogFactory.getLog(Constants.FileUploadLogger);
+	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
 	/**
 	 * RedisConnectionFactory singleton instance.
 	 */
@@ -59,8 +59,8 @@ public class RedisConnectionFactory {
 	public Jedis getConnection(String rid) throws Exception {
 		String methodName = "[getRedisConnection]";
 
-		if (log.isDebugEnabled())
-			log.debug(className + methodName + " Begin.");
+		//if (log.isDebugEnabled())
+			//log.debug(className + methodName + " Begin.");
 
 		Jedis con = null;
 
@@ -84,8 +84,9 @@ public class RedisConnectionFactory {
 			log.error(className + methodName + " Exception:", e);
 			throw e;
 		}
+		//if (log.isDebugEnabled())
+			//log.debug(className + methodName + " Jedis " + con + " End.");
 		return con;
-
 	}
 
 	public void loadFromDB() throws Exception {
@@ -97,7 +98,7 @@ public class RedisConnectionFactory {
 			if (redisServerDetails == null) {
 				log.error(className
 						+ methodName
-						+ " ERROR : ***COULD NOT LOAD REDIS INFO FROM DATABASE ******");
+						+ " ERROR : ***COULD NOT LOAD REDIS DATA FROM DATABASE ******");
 			}
 
 		} catch (Exception e) {

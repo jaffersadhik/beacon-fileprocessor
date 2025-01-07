@@ -8,10 +8,10 @@ import java.util.logging.SimpleFormatter;
 
 
 
-public class SplitStageLog {
+public class GroupProcessorLog {
 
 
-    private static final  Logger logger = Logger.getLogger(SplitStageLog.class.getName());
+    private static final  Logger logger = Logger.getLogger(GroupProcessorLog.class.getName());
     
     static {
     	
@@ -21,7 +21,7 @@ public class SplitStageLog {
          String folder="/opt/jboss/wildfly/logs";
          FolderCreation.foldercreaton(folder);
          
-        String logFileNamePattern = folder+"/splitstage.%g.log";
+        String logFileNamePattern = folder+"/groupprocessor.%g.log";
 
         Level loglevel=Level.INFO;
         
@@ -68,12 +68,12 @@ public class SplitStageLog {
         // Set the logging level for the logger
     }
 
-    private static SplitStageLog obj=new SplitStageLog();
+    private static GroupProcessorLog obj=new GroupProcessorLog();
     
-    public static SplitStageLog getInstance() {
+    public static GroupProcessorLog getInstance() {
     	
     	if(obj==null) {
-    		obj=new SplitStageLog();
+    		obj=new GroupProcessorLog();
     	}
     	
     	return obj;

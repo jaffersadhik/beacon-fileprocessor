@@ -72,5 +72,68 @@ public class Constants {
 	// MSG type
 	public static final String MSG_TYPE_MULTI_LANG = "multiLang";
 	public static final String MSG_TYPE_TEXT = "text";
+	
+	//Initial Stage
+	public static final String InitialStageLogger = "InitialStageLogger";
+	public static final String InitialStageHeartBeat = "InitialStageAlive";
+	public static final String INSTANCE_ID = "instance.id";
+	public static final String FETCH_SSR_ROW_LIMIT = "fetch.ssr.row.limit";
+	public static final int UNSPLIT = 0;
+	public static final int SPLIT = 1;
+	
+	
+	///group processor
+	
+	public static final String GroupsProcessorLogger = "GroupsProcessorLogger";
+	public static final String GroupsPollerRequired = "groups.poller.required";
+	public static final String FILE_SMS_ALL_STATUS = "file.sms.all.status";
+	public static final String PROCESS_STATUS_COMPLETED = "completed";
+	public static final String PROCESS_STATUS_FAILED = "failed";
+	public static final String PROCESS_STATUS_INPROGRESS = "inprocess";
+	public static final String SPLIT_FILE_CONSUMERS_PER_REDIS = "split.file.consumers.per.redis";
+	public static final String FILE_SPLIT_LIMIT = "file.split.limit";
+	public static final String DEADLOCK_EXCEPTION_DEFAULT = "Deadlock found";
+	public static final String PROCESS_STATUS_INVALIDFILE = "invalidfiles";
+	public static final String FILE_SMS_INPROCESS_STATUS = "file.sms.inprocess.status";
+	public static final String COMPLETED_STATUS = "status.completed";
+	public static final String FAILED_STATUS = "status.failed";
+	public static final String INVALID_STATUS = "status.invalid";
+	public static final String GROUP_SPLIT_FILES_QUEUE = "group.split.files.queue";
+	public static final String GROUPS_CONSUMERS_PER_REDIS = "groups.consumers.per.redis";
+	public static final String REDIS_PUSH_BATCH_SIZE = "contacts.push.batch.size";
+	public static final String GROUP_IDENTIFIER_EXCLUDE = "exclude";
+	public static final String GROUP_IDENTIFIER_NORMAL = "normal";
+	public static final String REDIS_QUEUE_NORMAL_GROUPS = "groups:contacts:group_id";
+	public static final String REDIS_QUEUE_EXCLUDE_GROUPS = "excludegroups:contacts:group_id";
+	public static final String REDIS_QUEUE_GROUPS_CONTACT_DETAILS = "groups:contactdetails:group_id";
+	public static final String REDIS_QUEUE_EXCLUDE_GROUPS_CONTACT_DETAILS = "excludegroups:contactdetails:group_id";
+	public static final String REDIS_QUEUE_GROUPS_OTHER_DETAILS = "groups:otherdetails";
+	public static final String GROUPS_CAMPAIGN_Q_CONSUMERS_PER_REDIS = "groups.campaign.queue.consumers.per.redis";
+	public static final String PROCESS_STATUS_GRPINPROGRESS = "ginprocess";
+	
+	
+	//download
+	
+	
+	public static final String DownloadHandlerLogger = "DownloadHandlerLogger";
+	public static final String PROCESS_STATUS_XL_INPROCESS = "xl_inprocess";
+	
+	public static final String FileUploadLogger = "DLTFileUploadLogger";
+	public static final String FILE_STORE_PATH = "file.store.path";
+	public static final String UNSUPPORTED_FILE_TYPE = "Unsupported File Type";
+	public static final String INTERNAL_SERVER_ERROR = "Internal Server Error";
+	public static final int SUCCESS_STATUS_CODE = 200;
+	public static final int INTERNAL_SERVER_ERROR_STATUS_CODE = 500;
+	public static final String APPLICATION_ERROR = "Application Error";
+	public static final int APPLICATION_ERROR_CODE = 300;
+	public static final String GENERAL_ERROR_MESSAGE = "Error processing your uploads. Please try again";
+	public static final String DLT_TEMPLATE_FILE_STORE_PATH = "dlt.template.file.store.path";
+	public static final int ERROR_CODE_REQUIRED_PARAMS_MISSING = 400;
+	
+	public static final String FILES_ALL_STATUS = "files.all.status";
+	public static final String DLT_FILE_QUEUE_NAME = "dlt.files.queue.name";
+	public static final String DLT_FILE_POLLER_REQUIRED = "dlt.file.poller.required";
+	public static final String DLT_FILE_CONSUMER_REQUIRED = "dlt.file.consumer.required";
+	public static final String DLT_FILE_CONSUMER_COUNT = "dlt.file.consumers.count";
 
 }

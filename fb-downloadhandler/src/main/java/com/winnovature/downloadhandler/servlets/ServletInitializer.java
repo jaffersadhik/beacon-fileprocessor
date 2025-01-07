@@ -15,9 +15,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.downloadhandler.consumers.CsvToExcelConvertionRequestConsumer;
-import com.winnovature.downloadhandler.consumers.PollerDownloadReq;
-import com.winnovature.downloadhandler.singletons.DownloadHandlerPropertiesTon;
-import com.winnovature.downloadhandler.utils.Constants;
+import com.winnovature.utils.utils.Constants;
+import com.winnovature.utils.utils.DownloadHandlerPropertiesTon;
 
 @WebServlet(name = "ServletInitializer", loadOnStartup = 1)
 public class ServletInitializer extends GenericServlet implements Servlet {
@@ -25,7 +24,6 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
 	private static final String className = "[ServletInitializer]";
 	PropertiesConfiguration propertiesConfiguration = null;
-	PollerDownloadReq pollerDownladReq = null;
 	CsvToExcelConvertionRequestConsumer csvToExcelConvertor = null;
 	boolean isPollerDownloadReqRequired = false;
 
@@ -50,9 +48,7 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 				}
 
 				if (isPollerDownloadReqRequired) {
-					pollerDownladReq = new PollerDownloadReq();
-					pollerDownladReq.setName("PollerDownladReq");
-					pollerDownladReq.start();
+				
 				}
 
 				int consumersCount = propertiesConfiguration.getInt("csv.excel.convertion.consumers.count", 5);

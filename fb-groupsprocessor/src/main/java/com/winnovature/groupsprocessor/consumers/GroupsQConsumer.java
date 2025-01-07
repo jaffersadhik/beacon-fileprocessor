@@ -9,10 +9,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.groupsprocessor.handlers.MasterFileSplitHandler;
-import com.winnovature.groupsprocessor.singletons.RedisConnectionFactory;
-import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 import com.winnovature.utils.singletons.ConfigParamsTon;
+import com.winnovature.utils.singletons.groupprocessor.RedisConnectionFactory;
+import com.winnovature.utils.utils.Constants;
 import com.winnovature.utils.utils.HeartBeatMonitoring;
 import com.winnovature.utils.utils.JsonUtility;
 import com.winnovature.utils.utils.Utility;
@@ -67,7 +68,7 @@ public class GroupsQConsumer extends Thread {
 							if (con != null) {
 								con.close();
 							}
-
+							GroupProcessorLog.getInstance().debug(className+" :  No data found let consumer rest for sleepTime : "+sleepTime);
 							// No data found let consumer rest for some time
 							consumerSleep(sleepTime);
 						} else {

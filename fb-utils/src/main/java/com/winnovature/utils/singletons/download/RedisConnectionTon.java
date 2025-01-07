@@ -1,20 +1,20 @@
-package com.winnovature.dltfileprocessor.singletons;
+package com.winnovature.utils.singletons.download;
 
 import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.winnovature.dltfileprocessor.daos.GenericDAO;
-import com.winnovature.dltfileprocessor.utils.Constants;
+import com.winnovature.utils.daos.download.GenericDAO;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
+import com.winnovature.utils.utils.Constants;
 
 import redis.clients.jedis.Jedis;
 
 public class RedisConnectionTon {
 
 	private static String className = "[RedisConnectionTon]";
-	static Log log = LogFactory.getLog(Constants.FileUploadLogger);
+	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
 
 	private static RedisConnectionTon singleton;
 	private static List<RedisServerDetailsBean> redisServerDetails = null;

@@ -12,8 +12,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.winnovature.groupsprocessor.singletons.RedisConnectionTon;
-import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.utils.singletons.groupprocessor.RedisConnectionTon;
+import com.winnovature.utils.utils.Constants;
 import com.winnovature.utils.utils.EmailValidator;
 
 import redis.clients.jedis.Jedis;

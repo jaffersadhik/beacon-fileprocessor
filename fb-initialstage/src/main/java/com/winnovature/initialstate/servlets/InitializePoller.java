@@ -13,8 +13,12 @@ import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.initialstate.pollers.CampaignGroupsPoller;
 import com.winnovature.initialstate.pollers.CampaignMasterPoller;
-import com.winnovature.initialstate.utils.Constants;
+import com.winnovature.initialstate.pollers.DltTemplateRequestCompletionPoller;
+import com.winnovature.initialstate.pollers.DltTemplateRequestPoller;
+import com.winnovature.initialstate.pollers.GroupsMasterPoller;
+import com.winnovature.initialstate.pollers.PollerDownloadReq;
 import com.winnovature.logger.InitialStageLog;
+import com.winnovature.utils.utils.Constants;
 
 public class InitializePoller extends GenericServlet implements Servlet {
 
@@ -23,7 +27,10 @@ public class InitializePoller extends GenericServlet implements Servlet {
 	private static final String className = "InitializePoller";
 	CampaignMasterPoller campaignMasterPoller = null;
 	CampaignGroupsPoller campaignGroupsPoller = null;
-
+	GroupsMasterPoller groupsMasterPoller = null;
+	PollerDownloadReq pollerDownladReq = null;
+	DltTemplateRequestPoller dltTemplateRequestPoller = null;
+	DltTemplateRequestCompletionPoller dltTemplateRequestCompletionPoller = null;
 	@Override
 	public void init() throws ServletException {
 		super.init();
@@ -53,9 +60,40 @@ public class InitializePoller extends GenericServlet implements Servlet {
 				campaignGroupsPoller.start();
 
 				InitialStageLog.getInstance().debug(className+" : campaignGroupsPoller.start()  " );
+				
+				groupsMasterPoller = new GroupsMasterPoller("GroupsMasterPoller");
+				groupsMasterPoller.setName("GroupsMasterPoller");
+				groupsMasterPoller.start();
+				
+				InitialStageLog.getInstance().debug(className+" groupsMasterPoller.start() "+groupsMasterPoller.getName());
+			
+				pollerDownladReq = new PollerDownloadReq();
+				pollerDownladReq.setName("PollerDownladReq");
+				pollerDownladReq.start();
+
+				InitialStageLog.getInstance().debug(className+" PollerDownloadReq.start() "+ pollerDownladReq.getName());
 
 				if (log.isDebugEnabled())
 					log.debug(className + " CampaignGroupsPoller started.");
+				
+				
+				dltTemplateRequestPoller = new DltTemplateRequestPoller("dltTemplateRequestPoller");
+				dltTemplateRequestPoller.setName("dltTemplateRequestPoller");
+				dltTemplateRequestPoller.start();
+				if (log.isDebugEnabled()) {
+					log.debug(className + " dltTemplateRequestPoller started.");
+				}
+				
+				InitialStageLog.getInstance().debug(className+ " dltTemplateRequestPoller started. : "+ dltTemplateRequestPoller.getName());
+
+				dltTemplateRequestCompletionPoller = new DltTemplateRequestCompletionPoller();
+				dltTemplateRequestCompletionPoller.setName("DltTemplateRequestCompletionPoller");
+				dltTemplateRequestCompletionPoller.start();
+				if (log.isDebugEnabled()) {
+					log.debug(className + " DltTemplateRequestCompletionPoller started.");
+				}
+
+				InitialStageLog.getInstance().debug(className+ " DltTemplateRequestCompletionPoller started. : "+ dltTemplateRequestCompletionPoller.getName());
 
 			} catch (Exception e) {
 				log.error(className + " Exception:", e);

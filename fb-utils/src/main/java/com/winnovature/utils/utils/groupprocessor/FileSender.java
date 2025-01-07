@@ -1,19 +1,21 @@
-package com.winnovature.groupsprocessor.utils;
+package com.winnovature.utils.utils.groupprocessor;
 
 import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.winnovature.groupsprocessor.singletons.RedisConnectionTon;
+import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.singletons.ConfigParamsTon;
+import com.winnovature.utils.singletons.groupprocessor.RedisConnectionTon;
+import com.winnovature.utils.utils.Constants;
 import com.winnovature.utils.utils.JsonUtility;
 
 import redis.clients.jedis.Jedis;
 
 public class FileSender {
 
-	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+	static Log log = LogFactory.getLog(Constants.UtilsLogger);
 	private static final String className = "[FileSender]";
 
 	public static boolean sendToFileQueue(Map<String, String> map, String queueName) throws Exception {
@@ -58,6 +60,9 @@ public class FileSender {
 					+ "] :" + (sent == true ? "Success." : "Failed."));
 			log.debug(className + methodName + " End.");
 		}
+		
+		GroupProcessorLog.getInstance().debug(className + methodName + " HO status for tagid[" + map.get("TAGID") + "] to Queue[" + queueName
+					+ "] :" + (sent == true ? "Success." : "Failed."));
 		return sent;
 	}
 

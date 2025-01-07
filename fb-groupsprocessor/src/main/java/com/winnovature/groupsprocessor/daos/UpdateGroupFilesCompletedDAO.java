@@ -12,10 +12,10 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
-import com.winnovature.groupsprocessor.utils.Constants;
 import com.winnovature.utils.singletons.ConfigParamsTon;
 import com.winnovature.utils.singletons.ConnectionFactoryForCMDB;
+import com.winnovature.utils.singletons.GroupsProcessorPropertiesTon;
+import com.winnovature.utils.utils.Constants;
 
 public class UpdateGroupFilesCompletedDAO {
 	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);

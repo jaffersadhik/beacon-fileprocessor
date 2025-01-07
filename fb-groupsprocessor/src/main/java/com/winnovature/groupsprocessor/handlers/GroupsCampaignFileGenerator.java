@@ -12,9 +12,9 @@ import org.apache.commons.logging.LogFactory;
 import com.aventrix.jnanoid.jnanoid.NanoIdUtils;
 import com.winnovature.groupsprocessor.daos.CampaignsDAO;
 import com.winnovature.groupsprocessor.daos.GroupRedisDAO;
-import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
-import com.winnovature.groupsprocessor.utils.Constants;
 import com.winnovature.groupsprocessor.utils.Utility;
+import com.winnovature.utils.singletons.GroupsProcessorPropertiesTon;
+import com.winnovature.utils.utils.Constants;
 
 public class GroupsCampaignFileGenerator {
 

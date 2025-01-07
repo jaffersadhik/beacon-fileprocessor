@@ -5,9 +5,11 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.dtos.SplitFileData;
 import com.winnovature.utils.dtos.TagwiseSplitFiles;
+import com.winnovature.utils.singletons.groupprocessor.RedisConnectionTon;
+import com.winnovature.utils.utils.Constants;
 import com.winnovature.utils.utils.JsonUtility;
 
 import redis.clients.jedis.Jedis;
@@ -41,6 +43,7 @@ public class RedisQueueSender {
 			log.debug(className + methodName + " Starting to send to Redis Q: "+queueName+"  metadata:"
 					+ tagwiseData);
 		}
+		
 		JsonUtility jsonUtility = null;
 		try {
 			jsonUtility = new JsonUtility();
@@ -78,6 +81,9 @@ public class RedisQueueSender {
 			if (resource != null)
 				resource.close();
 		}
+
+		GroupProcessorLog.getInstance().debug(className + methodName + " Starting to send to Redis Q: "+queueName+"  metadata:"
+				+ tagwiseData+" \n sent status : "+sent);
 
 		return sent;
 	}

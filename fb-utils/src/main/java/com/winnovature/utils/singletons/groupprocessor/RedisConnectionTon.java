@@ -1,13 +1,13 @@
-package com.winnovature.groupsprocessor.singletons;
+package com.winnovature.utils.singletons.groupprocessor;
 
 import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.winnovature.groupsprocessor.daos.GenericDAO;
-import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.utils.daos.groupprocessor.GenericDAO;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
+import com.winnovature.utils.utils.Constants;
 
 import redis.clients.jedis.Jedis;
 

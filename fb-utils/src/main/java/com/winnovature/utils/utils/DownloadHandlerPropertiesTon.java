@@ -1,4 +1,4 @@
-package com.winnovature.dltfileprocessor.singletons;
+package com.winnovature.utils.utils;
 
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;
@@ -6,22 +6,21 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.winnovature.dltfileprocessor.utils.Constants;
 import com.winnovature.utils.singletons.GlobalPropertiesTon;
 
-public class DltFileProcessorPropertiesTon {
+public class DownloadHandlerPropertiesTon {
 
-	static Log log = LogFactory.getLog(Constants.FileUploadLogger);
+	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
 
-	private static DltFileProcessorPropertiesTon singleton = new DltFileProcessorPropertiesTon();
+	private static DownloadHandlerPropertiesTon singleton = new DownloadHandlerPropertiesTon();
 	private PropertiesConfiguration propConf;
-	static final String propertyFileLookupKey = "dlt.file.processor.properties.loc";
-	private String className = "DltFileProcessorPropertiesTon";
+	static final String propertyFileLookupKey = "download.handler.properties.loc";
+	private String className = "DownloadHandlerPropertiesTon";
 
-	private DltFileProcessorPropertiesTon() {
+	private DownloadHandlerPropertiesTon() {
 	}
 
-	public static DltFileProcessorPropertiesTon getInstance() {
+	public static DownloadHandlerPropertiesTon getInstance() {
 		return singleton;
 	}
 
@@ -55,8 +54,8 @@ public class DltFileProcessorPropertiesTon {
 				propConf = new PropertiesConfiguration(propertyFilePath);
 				propConf.setReloadingStrategy(new FileChangedReloadingStrategy());
 			} else {
-				throw new Exception(
-						"****** ERROR: EITHER IT COULD NOT FIND " + propertyFilePath + " PROPERTY OR HAVE NO VALUES ****");
+				throw new Exception("****** ERROR: EITHER IT COULD NOT FIND " + propertyFilePath
+						+ " PROPERTY OR HAVE NO VALUES ****");
 			}
 		} catch (Exception e) {
 			log.error(className + methodName + "Exception: ", e);

@@ -11,12 +11,12 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.winnovature.dltfileprocessor.daos.DltTemplateRequestDAO;
-import com.winnovature.dltfileprocessor.daos.GenericDAO;
 import com.winnovature.dltfileprocessor.fileparser.FileParser;
 import com.winnovature.dltfileprocessor.fileparser.FileParserFactory;
-import com.winnovature.dltfileprocessor.singletons.DltFileProcessorPropertiesTon;
-import com.winnovature.dltfileprocessor.utils.Constants;
+import com.winnovature.utils.daos.dltfileprocessor.DltTemplateRequestDAO;
+import com.winnovature.utils.daos.dltfileprocessor.GenericDAO;
+import com.winnovature.utils.singletons.DltFileProcessorPropertiesTon;
+import com.winnovature.utils.utils.Constants;	
 
 public class MasterFileSplitHandler {
 
