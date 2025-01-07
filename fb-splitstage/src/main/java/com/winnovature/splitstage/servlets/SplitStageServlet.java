@@ -16,6 +16,7 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.winnovature.logger.SplitStageLog;
 import com.winnovature.splitstage.consumers.FileSplitQConsumer;
 import com.winnovature.splitstage.singletons.RedisConnectionTon;
 import com.winnovature.splitstage.singletons.SplitStagePropertiesTon;
@@ -45,6 +46,7 @@ public class SplitStageServlet extends GenericServlet implements Servlet {
 
 		super.init();
 
+		SplitStageLog.getInstance().debug(className+" init() ");
 		
 
 			try {
@@ -57,6 +59,8 @@ public class SplitStageServlet extends GenericServlet implements Servlet {
 						.getConfigurationFromconfigParams();
 
 				int splitConsumersPerRedisServer = Integer.parseInt(configMap.get(Constants.SPLIT_CONSUMERS_PER_REDIS));
+
+				SplitStageLog.getInstance().debug(className+" splitConsumersPerRedisServer : "+splitConsumersPerRedisServer);
 
 				if (log.isDebugEnabled()) {
 					log.debug(className + methodName + " splitConsumersPerRedisServer = " + splitConsumersPerRedisServer);
@@ -75,6 +79,9 @@ public class SplitStageServlet extends GenericServlet implements Servlet {
 						fileSplitQConsumer = new FileSplitQConsumer(bean, instanceId);
 						fileSplitQConsumer.setName("Thread" + (i+1) + "-" + "SplitQConsumer");
 						fileSplitQConsumer.start();
+						
+						SplitStageLog.getInstance().debug(className+" fileSplitQConsumer.start() : "+fileSplitQConsumer.getName());
+
 						if (log.isDebugEnabled())
 							log.debug("[SplitStageServlet.init()] >>>>>> STARTING FileSplitQConsumer[SplitQConsumer]  " + (i+1)
 									+ " ThreadName:" + fileSplitQConsumer.getName() + " bean:" + bean.getIpAddress());

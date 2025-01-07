@@ -17,6 +17,7 @@ import com.itextos.beacon.inmemdata.account.UserInfo;
 import com.winnovature.fileparser.factory.FileParserFactory;
 import com.winnovature.fileparser.handler.FileChopHandler;
 import com.winnovature.fileparser.interfaces.FileParser;
+import com.winnovature.logger.SplitStageLog;
 import com.winnovature.splitstage.daos.CampaignFileSplitsDAO;
 import com.winnovature.splitstage.daos.GenericDAO;
 import com.winnovature.splitstage.singletons.RedisConnectionTon;
@@ -48,6 +49,8 @@ public class MasterFileSplitHandler {
 	private Map<String, String> userInfo = null;
 
 	public MasterFileSplitHandler(Map<String, String> requestMap, String queueName) {
+		
+		SplitStageLog.getInstance().debug(className+" fileSplitQueuename :  "+fileSplitQueuename+"  requestMap : "+requestMap);
 		this.requestMap = requestMap;
 		this.fileSplitQueuename = queueName;
 		try {
@@ -102,6 +105,8 @@ public class MasterFileSplitHandler {
 			try {
 				// Check if file already splitted, if yes, then hand over to queue
 				lstSplitFiles = deliveryDAO.getSplitFiles(requestMap.get("cf_id"), maxRetryCount);
+				
+				SplitStageLog.getInstance().debug(className+" lstSplitFiles : "+lstSplitFiles );
 
 				if (log.isDebugEnabled()) {
 					log.debug(className + methodName + " lstSplitFiles from DB: " + lstSplitFiles);

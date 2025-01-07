@@ -11,6 +11,7 @@ import com.winnovature.handoverstage.daos.GenericDAO;
 import com.winnovature.handoverstage.singletons.HandoverStagePropertiesTon;
 import com.winnovature.handoverstage.singletons.RedisConnectionTon;
 import com.winnovature.handoverstage.utils.Constants;
+import com.winnovature.logger.HandoverStageLog;
 import com.winnovature.utils.singletons.ConfigParamsTon;
 import com.winnovature.utils.utils.UnProcessListsCollector;
 
@@ -175,6 +176,8 @@ public class SuccessfullHandover {
 		try {
 			redis = RedisConnectionTon.getInstance().getJedisConnectionAsRoundRobin();
 			redis.lpush(statsUpdateStatusQueryQueueName, sql);
+			HandoverStageLog.getInstance().debug(className+" : sendToUpdateQueue id "+id+" sql : "+sql);
+
 		} catch (Exception e) {
 			log.error(className + methodName + com.winnovature.utils.utils.Constants.FILEID_FOR_LOGGER + id
 					+ " Exception while sending to redis update queue", e);

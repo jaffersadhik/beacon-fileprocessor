@@ -11,6 +11,7 @@ import java.util.UUID;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.winnovature.logger.SplitStageLog;
 import com.winnovature.splitstage.singletons.SplitStagePropertiesTon;
 import com.winnovature.splitstage.utils.Constants;
 import com.winnovature.utils.dtos.SplitFileData;
@@ -76,6 +77,9 @@ public class CampaignFileSplitsDAO {
 		if (log.isDebugEnabled()) {
 			log.debug(className + methodName + " begin ...");
 		}
+		
+		
+		SplitStageLog.getInstance().debug(className+" insertSplitDetailsInCampaignFileSplits +  "+filelocList + " reqMap : "+reqMap);
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -121,6 +125,9 @@ public class CampaignFileSplitsDAO {
 			if (log.isDebugEnabled()) {
 				log.debug(className + methodName + " inserted records  " + result.length);
 			}
+			
+			SplitStageLog.getInstance().debug(className+" insertSplitDetailsInCampaignFileSplits +  "+ " inserted records  " + result.length);
+
 			con.commit();
 		} catch (Exception e) {
 			log.error(className + methodName + "Exception : ", e);

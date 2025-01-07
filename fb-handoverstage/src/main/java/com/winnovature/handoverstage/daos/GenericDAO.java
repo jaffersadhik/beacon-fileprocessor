@@ -14,6 +14,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.handoverstage.utils.Constants;
+import com.winnovature.logger.HandoverStageLog;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 import com.winnovature.utils.singletons.ConnectionFactoryForCMDB;
 
@@ -187,6 +188,9 @@ public class GenericDAO {
 		String sql = "update campaign_file_splits set started_ts=now()  where id = ? ";
 		if (log.isDebugEnabled())
 			log.debug(className + methodName + "sql = " + sql);
+		
+		HandoverStageLog.getInstance().debug(className + methodName + "sql = " + sql+" id : "+id);
+
 
 		try {
 

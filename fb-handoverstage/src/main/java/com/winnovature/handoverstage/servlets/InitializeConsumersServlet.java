@@ -23,6 +23,7 @@ import com.winnovature.handoverstage.consumers.SplitFileConsumer;
 import com.winnovature.handoverstage.singletons.HandoverStagePropertiesTon;
 import com.winnovature.handoverstage.singletons.RedisConnectionFactory;
 import com.winnovature.handoverstage.utils.Constants;
+import com.winnovature.logger.HandoverStageLog;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 import com.winnovature.utils.singletons.ConfigParamsTon;
 
@@ -44,6 +45,7 @@ public class InitializeConsumersServlet extends GenericServlet implements Servle
 		super.init();
 
 	
+		HandoverStageLog.getInstance().debug(className+" init() ");
 
 			try {
 				lMsgIdentifier.init(InterfaceType.GUI);
@@ -77,6 +79,9 @@ public class InitializeConsumersServlet extends GenericServlet implements Servle
 							consumer = new SplitFileConsumer(queueName, bean, instanceId);
 							consumer.setName("Thread" + i + "-" + queueName);
 							consumer.start();
+							
+							HandoverStageLog.getInstance().debug(className+" consumer.start() : "+consumer.getName());
+
 							if (log.isDebugEnabled())
 								log.debug(className + "[init] >>>>>> STARTING Handover Consumer  " + i + " QUEUE NAME "
 										+ queueName + " bean:" + bean.getIpAddress() + " instanceId:" + instanceId);

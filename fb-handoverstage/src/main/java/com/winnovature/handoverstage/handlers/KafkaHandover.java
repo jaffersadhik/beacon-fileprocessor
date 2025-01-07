@@ -14,6 +14,7 @@ import com.itextos.beacon.http.interfaceutil.uiftp.InterfaceRequest;
 import com.itextos.beacon.inmemdata.account.UserInfo;
 import com.winnovature.handoverstage.singletons.HandoverStagePropertiesTon;
 import com.winnovature.handoverstage.utils.Constants;
+import com.winnovature.logger.HandoverStageLog;
 
 public class KafkaHandover {
 
@@ -84,13 +85,18 @@ public class KafkaHandover {
 		} catch (ItextosException e) {
 			log.error(methodName + " ItextosException ", e);
 			kafkaLog.error(methodName + " ItextosException ", e);
+			HandoverStageLog.getInstance().error(className+" : error ",e);
 			throw e;
 		} catch (Exception e) {
 			log.error(methodName + " Exception ", e);
 			kafkaLog.error(methodName + " Exception ", e);
+			HandoverStageLog.getInstance().error(className+" : error ",e);
+
 		} catch (Throwable t) {
 			log.error(methodName + " Throwable ", t);
 			kafkaLog.error(methodName + " Throwable ", t);
+			HandoverStageLog.getInstance().error(className+" : error ",t);
+
 			throw new Exception(t.getMessage());
 		}
 		return aRequest;

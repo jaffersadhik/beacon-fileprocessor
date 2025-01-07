@@ -23,6 +23,7 @@ import com.winnovature.handoverstage.handlers.KafkaHandover;
 import com.winnovature.handoverstage.handlers.SuccessfullHandover;
 import com.winnovature.handoverstage.utils.Constants;
 import com.winnovature.handoverstage.utils.Utility;
+import com.winnovature.logger.HandoverStageLog;
 import com.winnovature.utils.dtos.UnprocessRow;
 import com.winnovature.utils.utils.JsonUtility;
 import com.winnovature.utils.utils.UserDetails;
@@ -191,7 +192,11 @@ public class ProcessOTM {
 							+ " file count: " + total + " no.of destinations HO:" + sucessCount
 							+ " :: Time taken for MW HO is " + time);
 				}
-				
+				HandoverStageLog.getInstance().debug(className + methodName + " File reading end time= " + new Date().toString()
+						+ com.winnovature.utils.utils.Constants.FILEID_FOR_LOGGER + id + " file Name:" + fileName
+						+ " file count: " + total + " no.of destinations HO:" + sucessCount
+						+ " :: Time taken for MW HO is " + time);
+
 				if (trackingLog.isDebugEnabled()) {
 					trackingLog.debug(className + methodName + " campaign name : " + mapObject.get("c_name")
 							+ " spilt file id " + id + "  filename:" + fileName + " file count: " + total

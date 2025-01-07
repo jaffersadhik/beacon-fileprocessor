@@ -15,6 +15,7 @@ import com.winnovature.handoverstage.processors.ProcessTEM;
 import com.winnovature.handoverstage.singletons.RedisConnectionFactory;
 import com.winnovature.handoverstage.utils.Constants;
 import com.winnovature.handoverstage.utils.Utility;
+import com.winnovature.logger.HandoverStageLog;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 import com.winnovature.utils.dtos.Templates;
 import com.winnovature.utils.singletons.ConfigParamsTon;
@@ -98,6 +99,10 @@ public class SplitFileConsumer extends Thread {
 						+ " in redis " + bean.getIpAddress() + ":"
 						+ bean.getPort() + " ");
 			}
+			
+			HandoverStageLog.getInstance().debug(className + " Looking up DQ " + deliveryQ
+						+ " in redis " + bean.getIpAddress() + ":"
+						+ bean.getPort() + " ");
 
 			configMap = (HashMap<String, String>) ConfigParamsTon.getInstance()
 					.getConfigurationFromconfigParams();
@@ -131,6 +136,10 @@ public class SplitFileConsumer extends Thread {
 						logger.debug(className + methodName
 								+ " Found cm_id :" + campIdQueue
 								+ " and its metadata: " + splitFileMetaData);
+						
+						HandoverStageLog.getInstance().debug(className + methodName
+								+ " Found cm_id :" + campIdQueue
+								+ " and its metadata: " + splitFileMetaData);
 					}
 
 					map = new JsonUtility().convertJsonStringToMap(splitFileMetaData);
@@ -140,7 +149,11 @@ public class SplitFileConsumer extends Thread {
 						logger.debug(className
 								+ " Request will be removed from queue and processing business logic");
 					}
+					HandoverStageLog.getInstance().debug(className + " Request consumed:" + map);
 
+					HandoverStageLog.getInstance().debug(className
+								+ " Request will be removed from queue and processing business logic");
+					
 					//String id = map.get("ID").toString();
 					map.put("DQQUEUENAME", deliveryQ);
 					handoverToProcess(map, splitFileMetaData, campIdQueue);

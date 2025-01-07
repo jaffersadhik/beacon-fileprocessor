@@ -7,6 +7,7 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.winnovature.logger.SplitStageLog;
 import com.winnovature.splitstage.handlers.MasterFileSplitHandler;
 import com.winnovature.splitstage.singletons.RedisConnectionFactory;
 import com.winnovature.splitstage.utils.Constants;
@@ -68,6 +69,7 @@ public class FileSplitQConsumer extends Thread {
 								  
 							// No data found let consumer rest for some time
 							consumerSleep(sleepTime);
+							SplitStageLog.getInstance().debug(className+" No data found let consumer rest for sleepTime "+sleepTime);
 						}else {
 							Map<String, String> map = new JsonUtility().convertJsonStringToMap(ssrDetailsJSON);
 
@@ -98,10 +100,14 @@ public class FileSplitQConsumer extends Thread {
 			} catch (Exception e) {
 				log.error("Exception connecting to taskQ[" + queueName + "]", e);
 				log.error(className  + " [run] : "+this.getName() + "  will sleep for " + threadSleepTime+" milli seconds then restarts."); 
+				SplitStageLog.getInstance().error(className+" error ",e);
+
 				consumerSleep(threadSleepTime);
 			} catch (Throwable t) {
 				log.error(className + " Throwable connecting to taskQ[" + queueName + "]", t);
 				log.error(className  + " [run] : "+this.getName() + "  will sleep for " + threadSleepTime+" milli seconds then restarts."); 
+				SplitStageLog.getInstance().error(className+" error ",t);
+
 				consumerSleep(threadSleepTime);
 			}
 		}
