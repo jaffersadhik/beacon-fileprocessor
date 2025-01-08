@@ -13,8 +13,6 @@ import javax.servlet.annotation.WebServlet;
 
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.dltfileprocessor.consumers.DltFileQConsumer;
 import com.winnovature.dltfileprocessor.pollers.DltTemplateRequestCompletionPoller;
