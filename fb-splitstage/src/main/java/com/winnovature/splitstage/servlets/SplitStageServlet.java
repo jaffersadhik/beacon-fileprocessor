@@ -27,8 +27,8 @@ import com.winnovature.utils.singletons.ConfigParamsTon;
 public class SplitStageServlet extends GenericServlet implements Servlet {
 
 	private static final long serialVersionUID = 4534056481918798836L;
-	static Log log = LogFactory.getLog(Constants.SplitStageLogger);
-
+	//static Log log = LogFactory.getLog(Constants.SplitStageLogger);
+	static SplitStageLog log= SplitStageLog.getInstance();
 	String className = "SplitStageServlet";
 	FileSplitQConsumer fileSplitQConsumer = null;
 	PropertiesConfiguration prop = null;

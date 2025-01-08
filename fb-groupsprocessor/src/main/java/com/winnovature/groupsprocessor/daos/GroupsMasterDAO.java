@@ -20,12 +20,15 @@ import org.apache.commons.logging.LogFactory;
 import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
 import com.winnovature.groupsprocessor.utils.Constants;
 import com.winnovature.groupsprocessor.utils.FileSender;
+import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.dtos.SplitFileData;
 import com.winnovature.utils.singletons.ConnectionFactoryForCMDB;
 
 public class GroupsMasterDAO {
 
-	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+	static GroupProcessorLog log=GroupProcessorLog.getInstance();
+
+//	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
 	private static final String className = "[GroupsMasterDAO]";
 	PropertiesConfiguration prop = null;
 

@@ -15,11 +15,14 @@ import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
 import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.singletons.ConfigParamsTon;
 import com.winnovature.utils.singletons.ConnectionFactoryForCMDB;
 
 public class CampaignsDAO {
-	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+//	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+	static GroupProcessorLog log=GroupProcessorLog.getInstance();
+
 	private static final String className = "[CampaignsDAO]";
 	PropertiesConfiguration prop = null;
 	

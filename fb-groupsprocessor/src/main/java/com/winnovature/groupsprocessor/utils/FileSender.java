@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.groupsprocessor.singletons.RedisConnectionTon;
+import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.singletons.ConfigParamsTon;
 import com.winnovature.utils.utils.JsonUtility;
 
@@ -13,7 +14,9 @@ import redis.clients.jedis.Jedis;
 
 public class FileSender {
 
-	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+	static GroupProcessorLog log=GroupProcessorLog.getInstance();
+
+	//static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
 	private static final String className = "[FileSender]";
 
 	public static boolean sendToFileQueue(Map<String, String> map, String queueName) throws Exception {

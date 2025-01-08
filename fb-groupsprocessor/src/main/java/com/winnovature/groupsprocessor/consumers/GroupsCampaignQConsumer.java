@@ -13,6 +13,7 @@ import org.apache.commons.logging.LogFactory;
 import com.winnovature.groupsprocessor.daos.CampaignsDAO;
 import com.winnovature.groupsprocessor.handlers.GroupsCampaignFileGenerator;
 import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 import com.winnovature.utils.singletons.ConfigParamsTon;
 import com.winnovature.utils.singletons.RedisConnectionFactory;
@@ -24,7 +25,9 @@ import com.winnovature.utils.utils.Utility;
 import redis.clients.jedis.Jedis;
 
 public class GroupsCampaignQConsumer extends Thread {
-	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+//	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+	static GroupProcessorLog log=GroupProcessorLog.getInstance();
+
 	PropertiesConfiguration prop = null;
 
 	private RedisServerDetailsBean bean = null;

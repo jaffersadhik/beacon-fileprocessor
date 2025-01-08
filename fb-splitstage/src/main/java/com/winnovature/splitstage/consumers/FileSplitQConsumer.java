@@ -20,7 +20,9 @@ import com.winnovature.utils.utils.Utility;
 import redis.clients.jedis.Jedis;
 
 public class FileSplitQConsumer extends Thread {
-	static Log log = LogFactory.getLog(Constants.SplitStageLogger);
+//	static Log log = LogFactory.getLog(Constants.SplitStageLogger);
+	static SplitStageLog log= SplitStageLog.getInstance();
+	
 	PropertiesConfiguration prop = null;
 
 	private RedisServerDetailsBean bean = null;

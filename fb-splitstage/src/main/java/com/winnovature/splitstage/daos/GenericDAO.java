@@ -11,6 +11,7 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.winnovature.logger.SplitStageLog;
 import com.winnovature.splitstage.singletons.SplitStagePropertiesTon;
 import com.winnovature.splitstage.utils.Constants;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
@@ -19,8 +20,9 @@ import com.winnovature.utils.singletons.ConnectionFactoryForCMDB;
 
 public class GenericDAO {
 
-	static Log log = LogFactory.getLog(Constants.SplitStageLogger);
-
+	//static Log log = LogFactory.getLog(Constants.SplitStageLogger);
+	static SplitStageLog log= SplitStageLog.getInstance();
+	
 	private static final String className = "[GenericDAO]";
 
 	public Map<String, RedisServerDetailsBean> selectRedisServerDetailsAsMap() throws Exception {

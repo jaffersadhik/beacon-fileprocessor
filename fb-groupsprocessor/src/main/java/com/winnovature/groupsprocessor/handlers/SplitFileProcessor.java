@@ -25,12 +25,15 @@ import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
 import com.winnovature.groupsprocessor.utils.Constants;
 import com.winnovature.groupsprocessor.utils.FileSender;
 import com.winnovature.groupsprocessor.utils.Utility;
+import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.utils.MobileValidator;
 import com.winnovature.utils.utils.UserDetails;
 
 public class SplitFileProcessor {
 
-	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+	static GroupProcessorLog log=GroupProcessorLog.getInstance();
+
+//	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
 	private static final String className = "[SplitFileProcessor]";
 
 	private long batchSize = 500;

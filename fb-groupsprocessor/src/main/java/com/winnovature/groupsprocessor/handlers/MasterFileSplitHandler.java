@@ -20,6 +20,7 @@ import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
 import com.winnovature.groupsprocessor.singletons.RedisConnectionTon;
 import com.winnovature.groupsprocessor.singletons.RedisQueueSender;
 import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.dtos.FileDataBean;
 import com.winnovature.utils.dtos.SendSMSTypes;
 import com.winnovature.utils.dtos.SplitFileData;
@@ -32,7 +33,9 @@ import redis.clients.jedis.Jedis;
 public class MasterFileSplitHandler {
 
 	private static final String className = "[MasterFileSplitHandler]";
-	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+//	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+	static GroupProcessorLog log=GroupProcessorLog.getInstance();
+
 	private Map<String, String> requestMap;
 	private String fileSplitQueuename;
 	private Map<String, String> configMap = null;

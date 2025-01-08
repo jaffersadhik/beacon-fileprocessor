@@ -11,12 +11,15 @@ import org.apache.commons.logging.LogFactory;
 import com.winnovature.groupsprocessor.daos.UpdateGroupMasterCompletedDAO;
 import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
 import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.utils.HeartBeatMonitoring;
 import com.winnovature.utils.utils.Utility;
 
 public class PollerGroupMasterCompleted extends Thread {
 
-	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+	static GroupProcessorLog log=GroupProcessorLog.getInstance();
+
+//	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
 
 	PropertiesConfiguration prop = null;
 

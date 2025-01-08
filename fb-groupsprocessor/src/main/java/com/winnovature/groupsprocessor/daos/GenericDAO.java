@@ -12,12 +12,15 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 import com.winnovature.utils.singletons.ConnectionFactoryForCMDB;
 
 public class GenericDAO {
 
-	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+	static GroupProcessorLog log=GroupProcessorLog.getInstance();
+
+//	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
 	private static final String className = "[GenericDAO] ";
 
 	public List<RedisServerDetailsBean> selectRedisServerDetails(int status) throws Exception {

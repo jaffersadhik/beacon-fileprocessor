@@ -15,10 +15,13 @@ import com.winnovature.groupsprocessor.daos.GroupRedisDAO;
 import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
 import com.winnovature.groupsprocessor.utils.Constants;
 import com.winnovature.groupsprocessor.utils.Utility;
+import com.winnovature.logger.GroupProcessorLog;
 
 public class GroupsCampaignFileGenerator {
 
-	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+	static GroupProcessorLog log=GroupProcessorLog.getInstance();
+
+	//static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
 	private static final String className = "[SplitFileProcessor]";
 
 	private int batchSize = 500;

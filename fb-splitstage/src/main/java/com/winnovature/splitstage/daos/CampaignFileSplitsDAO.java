@@ -18,8 +18,9 @@ import com.winnovature.utils.dtos.SplitFileData;
 import com.winnovature.utils.singletons.ConnectionFactoryForCMDB;
 
 public class CampaignFileSplitsDAO {
-	static Log log = LogFactory.getLog(Constants.SplitStageLogger);
-
+	//static Log log = LogFactory.getLog(Constants.SplitStageLogger);
+	static SplitStageLog log= SplitStageLog.getInstance();
+	
 	private static final String className = "[CampaignFileSplitsDAO]";
 
 	public List<SplitFileData> getSplitFiles(String masterId, String maxRetryCount) throws Exception {

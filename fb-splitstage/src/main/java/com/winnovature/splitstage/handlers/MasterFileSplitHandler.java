@@ -41,7 +41,9 @@ import redis.clients.jedis.Jedis;
 public class MasterFileSplitHandler {
 
 	private static final String className = "[MasterFileSplitHandler]";
-	static Log log = LogFactory.getLog(Constants.SplitStageLogger);
+//	static Log log = LogFactory.getLog(Constants.SplitStageLogger);
+	static SplitStageLog log= SplitStageLog.getInstance();
+	
 	private Map<String, String> requestMap;
 	private String fileSplitQueuename;
 	private Map<String, String> configMap = null;

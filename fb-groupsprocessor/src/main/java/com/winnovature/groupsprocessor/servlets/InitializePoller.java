@@ -13,8 +13,6 @@ import javax.servlet.annotation.WebServlet;
 
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.groupsprocessor.consumers.GroupsCampaignQConsumer;
 import com.winnovature.groupsprocessor.consumers.GroupsFileSplitQConsumer;
@@ -26,13 +24,15 @@ import com.winnovature.groupsprocessor.pollers.GroupsMasterPoller;
 import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
 import com.winnovature.groupsprocessor.singletons.RedisConnectionTon;
 import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 
 @WebServlet(name = "InitializePoller", loadOnStartup = 1)
 public class InitializePoller extends GenericServlet implements Servlet {
 
 	private static final long serialVersionUID = 1L;
-	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+	//static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+	static GroupProcessorLog log=GroupProcessorLog.getInstance();
 	private static final String className = "InitializePoller";
 	PropertiesConfiguration groupsProperties = null;
 	GroupsMasterPoller groupsMasterPoller = null;

@@ -11,13 +11,16 @@ import org.apache.commons.logging.LogFactory;
 import com.winnovature.groupsprocessor.daos.GroupsMasterDAO;
 import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
 import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.singletons.ConfigParamsTon;
 import com.winnovature.utils.utils.HeartBeatMonitoring;
 import com.winnovature.utils.utils.Utility;
 
 public class GroupsMasterPoller extends Thread {
 
-	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+	static GroupProcessorLog log=GroupProcessorLog.getInstance();
+
+//	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
 	private static final String className = "[GroupsMasterPoller]";
 	private String threadName = null;
 

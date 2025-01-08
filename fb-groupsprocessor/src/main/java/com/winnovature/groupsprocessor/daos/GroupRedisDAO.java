@@ -14,6 +14,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.groupsprocessor.singletons.RedisConnectionTon;
 import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.utils.EmailValidator;
 
 import redis.clients.jedis.Jedis;
@@ -21,7 +22,9 @@ import redis.clients.jedis.ScanParams;
 import redis.clients.jedis.ScanResult;
 
 public class GroupRedisDAO {
-	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
+	static GroupProcessorLog log=GroupProcessorLog.getInstance();
+
+//	static Log log = LogFactory.getLog(Constants.GroupsProcessorLogger);
 	private final String className = "[SplitFileProcessor]";
 
 	public long pushToGroupDetailsRedis(String groupID, List<String> numbers, String groupIdentifier) throws Exception {
