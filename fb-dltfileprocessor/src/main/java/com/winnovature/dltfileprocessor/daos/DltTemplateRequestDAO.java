@@ -21,6 +21,7 @@ import com.aventrix.jnanoid.jnanoid.NanoIdUtils;
 import com.winnovature.dltfileprocessor.singletons.DltFileProcessorPropertiesTon;
 import com.winnovature.dltfileprocessor.utils.Constants;
 import com.winnovature.dltfileprocessor.utils.FileSender;
+import com.winnovature.logger.DLTFileLog;
 import com.winnovature.utils.singletons.ConnectionFactoryForAccountsDB;
 import com.winnovature.utils.singletons.ConnectionFactoryForCMDB;
 
@@ -104,6 +105,7 @@ public class DltTemplateRequestDAO {
 			if(!foundData) {
 				if (log.isDebugEnabled())
 					log.debug(className + methodName + " No request found with matching criteria, sleeping for "+sleepTime+" milli seconds.");
+				DLTFileLog.getInstance().debug(className + methodName + " No request found with matching criteria, sleeping for "+sleepTime+" milli seconds."+"\n sql : "+ sql);
 				consumerSleep(sleepTime);
 			}
 			
@@ -151,6 +153,8 @@ public class DltTemplateRequestDAO {
 
 		String methodName = "[updateDltFilesStatus]";
 		
+		DLTFileLog.getInstance().debug(className + methodName + " status : " + status+" instanceId : "+instanceId+" reason: "+reason+ " campInfo : "+campInfo);
+
 		StringBuilder dlt_request_sql = new StringBuilder("update dlt_template_request SET status = ? ");
 		if(status.equalsIgnoreCase(Constants.PROCESS_STATUS_FAILED)) {
 			dlt_request_sql.append(", reason=? ");
@@ -169,6 +173,9 @@ public class DltTemplateRequestDAO {
 			log.debug(className + methodName + "dlt_template_request update sql - " + dlt_request_sql);
 			log.debug(className + methodName + "dlt_template_files update sql - " + dlt_files_sql);
 		}
+
+		DLTFileLog.getInstance().debug(className + methodName + " dlt_template_request update sql - " + dlt_request_sql);
+		DLTFileLog.getInstance().debug(className + methodName + " dlt_template_files update sql - " + dlt_files_sql);
 
 		Connection con = null;
 		PreparedStatement dltRequestPstmt = null;

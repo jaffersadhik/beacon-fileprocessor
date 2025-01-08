@@ -11,6 +11,7 @@ import org.apache.commons.logging.LogFactory;
 import com.winnovature.dltfileprocessor.services.MasterFileSplitHandler;
 import com.winnovature.dltfileprocessor.singletons.RedisConnectionFactory;
 import com.winnovature.dltfileprocessor.utils.Constants;
+import com.winnovature.logger.DLTFileLog;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 import com.winnovature.utils.singletons.ConfigParamsTon;
 import com.winnovature.utils.utils.HeartBeatMonitoring;
@@ -68,6 +69,7 @@ public class DltFileQConsumer extends Thread {
 							}
 								  
 							// No data found let consumer rest for some time
+							DLTFileLog.getInstance().debug( " No data found let consumer rest sleepTime "+sleepTime);
 							consumerSleep(sleepTime);
 						}else {
 							Map<String, String> map = new JsonUtility().convertJsonStringToMap(jsonRequest);
@@ -77,6 +79,9 @@ public class DltFileQConsumer extends Thread {
 								+ " and will be removed from DltFileQ[" + queueName + "] and processing business logic");
 							}
 
+							DLTFileLog.getInstance().debug(Thread.currentThread().getName() + "[DltFileQConsumer]" + " Request consumed:" + map 
+								+ " and will be removed from DltFileQ[" + queueName + "] and processing business logic");
+							
 							new MasterFileSplitHandler(map, queueName).handleMasterRecords();
 							// Jedis con close should be the last statement
 							if (con != null) {

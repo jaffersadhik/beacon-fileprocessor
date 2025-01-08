@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.dltfileprocessor.singletons.RedisConnectionTon;
+import com.winnovature.logger.DLTFileLog;
 import com.winnovature.utils.utils.JsonUtility;
 
 import redis.clients.jedis.Jedis;
@@ -59,6 +60,9 @@ public class FileSender {
 					+ "] :" + (sent == true ? "Success." : "Failed."));
 			log.debug(className + methodName + " End.");
 		}
+		
+		DLTFileLog.getInstance().debug(className + methodName + " HO status for id[" + map.get("dtf_id") + "] to Queue[" + queueName
+					+ "] :" + (sent == true ? "Success." : "Failed."));
 		return sent;
 	}
 

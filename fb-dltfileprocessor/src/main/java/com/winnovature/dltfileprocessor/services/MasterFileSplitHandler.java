@@ -17,6 +17,7 @@ import com.winnovature.dltfileprocessor.fileparser.FileParser;
 import com.winnovature.dltfileprocessor.fileparser.FileParserFactory;
 import com.winnovature.dltfileprocessor.singletons.DltFileProcessorPropertiesTon;
 import com.winnovature.dltfileprocessor.utils.Constants;
+import com.winnovature.logger.DLTFileLog;
 
 public class MasterFileSplitHandler {
 
@@ -43,6 +44,7 @@ public class MasterFileSplitHandler {
 			processUploadedFiles();
 		} catch (FileNotFoundException fnfe) {
 			log.error(className + methodName + "FileNotFoundException: ", fnfe);
+			DLTFileLog.getInstance().error(className + methodName + "FileNotFoundException: ",fnfe);
 			try {
 				Map<String, String> campaignFilesData = new HashMap<String, String>();
 				campaignFilesData.put("dtf_id", requestMap.get("dtf_id"));
