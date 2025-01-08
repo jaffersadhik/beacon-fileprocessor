@@ -19,8 +19,11 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.winnovature.logger.DLTFileLog;
+
 public class ZipHandler {
-	static Log log = LogFactory.getLog(Constants.FileUploadLogger);
+	//static Log log = LogFactory.getLog(Constants.FileUploadLogger);
+	static DLTFileLog log = DLTFileLog.getInstance();
 
 	public List<Map<String, Object>> extractZipFileContent(String inputZipFile, String pathToExtract) throws Exception {
 		List<Map<String, Object>> response = new ArrayList<Map<String, Object>>();

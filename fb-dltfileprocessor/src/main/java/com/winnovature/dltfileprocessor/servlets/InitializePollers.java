@@ -22,13 +22,15 @@ import com.winnovature.dltfileprocessor.pollers.DltTemplateRequestPoller;
 import com.winnovature.dltfileprocessor.singletons.DltFileProcessorPropertiesTon;
 import com.winnovature.dltfileprocessor.singletons.RedisConnectionTon;
 import com.winnovature.dltfileprocessor.utils.Constants;
+import com.winnovature.logger.DLTFileLog;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 
 @WebServlet(name = "InitializePollers", loadOnStartup = 1)
 public class InitializePollers extends GenericServlet implements Servlet {
 
 	private static final long serialVersionUID = 1L;
-	static Log log = LogFactory.getLog(Constants.FileUploadLogger);
+	//static Log log = LogFactory.getLog(Constants.FileUploadLogger);
+	static DLTFileLog log = DLTFileLog.getInstance();
 	private static final String className = "[InitializePollers]";
 	PropertiesConfiguration dltProperties = null;
 	DltTemplateRequestPoller dltTemplateRequestPoller = null;
@@ -46,6 +48,7 @@ public class InitializePollers extends GenericServlet implements Servlet {
 				if (log.isDebugEnabled()) {
 					log.debug(className + " InitializePollers Servlet started...");
 				}
+				
 				dltProperties = DltFileProcessorPropertiesTon.getInstance().getPropertiesConfiguration();
 				String instanceId = dltProperties.getString(Constants.MONITORING_INSTANCE_ID);
 				String pollerRequired = dltProperties.getString(Constants.DLT_FILE_POLLER_REQUIRED);

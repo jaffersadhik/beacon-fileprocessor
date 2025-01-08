@@ -27,13 +27,15 @@ import com.winnovature.dltfileprocessor.daos.DltTemplateRequestDAO;
 import com.winnovature.dltfileprocessor.singletons.DltFileProcessorPropertiesTon;
 import com.winnovature.dltfileprocessor.utils.Constants;
 import com.winnovature.dltfileprocessor.utils.Utility;
+import com.winnovature.logger.DLTFileLog;
 import com.winnovature.utils.utils.UploadedFilesTrackingUtility;
 
 import au.com.bytecode.opencsv.CSVWriter;
 
 public class XlsFileParser implements FileParser {
+	static DLTFileLog log = DLTFileLog.getInstance();
 
-	private static Log log = LogFactory.getLog(Constants.FileUploadLogger);
+//	private static Log log = LogFactory.getLog(Constants.FileUploadLogger);
 	private File file;
 	private InputStream stream;
 	private HSSFWorkbook workbook;

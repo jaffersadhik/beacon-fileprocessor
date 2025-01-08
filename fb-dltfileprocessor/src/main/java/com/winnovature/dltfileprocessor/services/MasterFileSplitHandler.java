@@ -22,7 +22,9 @@ import com.winnovature.logger.DLTFileLog;
 public class MasterFileSplitHandler {
 
 	private static final String className = "[MasterFileSplitHandler]";
-	static Log log = LogFactory.getLog(Constants.FileUploadLogger);
+//	static Log log = LogFactory.getLog(Constants.FileUploadLogger);
+	static DLTFileLog log = DLTFileLog.getInstance();
+
 	private Map<String, String> requestMap;
 
 	public MasterFileSplitHandler(Map<String, String> requestMap, String queueName) {

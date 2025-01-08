@@ -13,7 +13,9 @@ import redis.clients.jedis.Jedis;
 
 public class FileSender {
 
-	static Log log = LogFactory.getLog(Constants.FileUploadLogger);
+	static DLTFileLog log = DLTFileLog.getInstance();
+
+//	static Log log = LogFactory.getLog(Constants.FileUploadLogger);
 	private static final String className = "[FileSender]";
 
 	public static boolean sendToFileQueue(Map<String, String> map, String queueName) throws Exception {

@@ -19,9 +19,12 @@ import com.winnovature.dltfileprocessor.fileparser.XlsxFileParser;
 import com.winnovature.dltfileprocessor.singletons.DltFileProcessorPropertiesTon;
 import com.winnovature.dltfileprocessor.utils.Constants;
 import com.winnovature.dltfileprocessor.utils.Utility;
+import com.winnovature.logger.DLTFileLog;
 
 public class FileReadService implements Callable<Map<String, Object>> {
-	static Log log = LogFactory.getLog(Constants.FileUploadLogger);
+//	static Log log = LogFactory.getLog(Constants.FileUploadLogger);
+	static DLTFileLog log = DLTFileLog.getInstance();
+
 	private String fileToBeRead = null;
 	Map<String, Object> data = null;
 	private String telco = null;

@@ -11,13 +11,16 @@ import org.apache.commons.logging.LogFactory;
 import com.winnovature.dltfileprocessor.daos.DltTemplateRequestDAO;
 import com.winnovature.dltfileprocessor.singletons.DltFileProcessorPropertiesTon;
 import com.winnovature.dltfileprocessor.utils.Constants;
+import com.winnovature.logger.DLTFileLog;
 import com.winnovature.utils.singletons.ConfigParamsTon;
 import com.winnovature.utils.utils.HeartBeatMonitoring;
 import com.winnovature.utils.utils.Utility;
 
 public class DltTemplateRequestPoller extends Thread {
 
-	static Log log = LogFactory.getLog(Constants.FileUploadLogger);
+	static DLTFileLog log = DLTFileLog.getInstance();
+
+//	static Log log = LogFactory.getLog(Constants.FileUploadLogger);
 	private static final String className = "[dltTemplateRequestPoller]";
 	private String threadName = null;
 

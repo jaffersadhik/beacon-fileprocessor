@@ -16,11 +16,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.dltfileprocessor.utils.Constants;
+import com.winnovature.logger.DLTFileLog;
 
 @WebFilter(urlPatterns = { "/*" })
 public class CORSFilter implements Filter {
 
-	static Log logger = LogFactory.getLog(Constants.FileUploadLogger);
+	//static Log logger = LogFactory.getLog(Constants.FileUploadLogger);
+	static DLTFileLog logger = DLTFileLog.getInstance();
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {

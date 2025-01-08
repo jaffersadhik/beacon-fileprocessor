@@ -25,7 +25,7 @@ public class FileParserFactory {
 			parser = new XlsxFileParser(file, isFileUpload, startingRowIndex, telco, username);
 
 		if (parser == null) {
-			throw new RuntimeException("no parser found for the file type: "
+			throw new Exception("no parser found for the file type: "
 					+ extension);
 		}
 		return parser;
