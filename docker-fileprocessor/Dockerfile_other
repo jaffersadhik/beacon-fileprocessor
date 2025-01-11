@@ -5,7 +5,9 @@
 FROM openjdk:21-jdk-slim
 
 # Install necessary utilities
-RUN apt-get update && apt-get install -y curl tar
+RUN apt-get update && apt-get install -y curl tar libfreetype6
+
+
 
 RUN mkdir -p /opt/jboss/
 
