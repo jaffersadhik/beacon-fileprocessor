@@ -47,7 +47,7 @@ public class FileParserFactory {
 			parser = new ZipFileParser(file, listener);
 
 		if (parser == null) {
-			throw new RuntimeException("no parser found for the file type: "
+			throw new Exception("no parser found for the file type: "
 					+ extension);
 		}
 		return parser;
@@ -78,7 +78,7 @@ public class FileParserFactory {
 			parser = new ZipFileParser(file, listener);
 
 		if (parser == null) {
-			throw new RuntimeException("no parser found for the file type: "
+			throw new Exception("no parser found for the file type: "
 					+ extension);
 		}
 
@@ -110,7 +110,7 @@ public class FileParserFactory {
 			parser = new ZipFileParser(stream, listener);
 
 		if (parser == null) {
-			throw new RuntimeException("no parser found for the file type: "
+			throw new Exception("no parser found for the file type: "
 					+ extension);
 		}
 
@@ -142,7 +142,7 @@ public class FileParserFactory {
 			parser = new ZipFileParser(file, listener);
 
 		if (parser == null) {
-			throw new RuntimeException("no parser found for the file type: "
+			throw new Exception("no parser found for the file type: "
 					+ extension);
 		}
 		return parser;

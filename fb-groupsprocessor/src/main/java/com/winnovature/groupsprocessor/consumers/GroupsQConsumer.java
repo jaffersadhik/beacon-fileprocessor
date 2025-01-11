@@ -72,6 +72,7 @@ public class GroupsQConsumer extends Thread {
 							}
 
 							// No data found let consumer rest for some time
+							log.debug("No data found let consumer rest for sleepTime : "+sleepTime );
 							consumerSleep(sleepTime);
 						} else {
 							Map<String, String> map = new JsonUtility().convertJsonStringToMap(groupDetailsJSON);

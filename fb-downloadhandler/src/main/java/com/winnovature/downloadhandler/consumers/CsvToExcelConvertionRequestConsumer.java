@@ -4,13 +4,11 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.configuration.PropertiesConfiguration;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.downloadhandler.singletons.DownloadHandlerPropertiesTon;
 import com.winnovature.downloadhandler.singletons.RedisConnectionTon;
-import com.winnovature.downloadhandler.utils.Constants;
 import com.winnovature.downloadhandler.utils.CsvToExcelConvertor;
+import com.winnovature.logger.LogDonwloadLog;
 import com.winnovature.utils.utils.HeartBeatMonitoring;
 import com.winnovature.utils.utils.JsonUtility;
 import com.winnovature.utils.utils.Utility;
@@ -18,7 +16,9 @@ import com.winnovature.utils.utils.Utility;
 import redis.clients.jedis.Jedis;
 
 public class CsvToExcelConvertionRequestConsumer extends Thread {
-	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
+	static LogDonwloadLog log =LogDonwloadLog.getInstance();
+
+//	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
 	PropertiesConfiguration prop = null;
 
 	String className = "[CsvToExcelConvertor]";

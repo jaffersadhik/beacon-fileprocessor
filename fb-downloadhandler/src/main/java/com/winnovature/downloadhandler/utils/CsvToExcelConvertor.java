@@ -20,6 +20,7 @@ import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 
 import com.winnovature.downloadhandler.daos.DownloadReqDAO;
+import com.winnovature.logger.LogDonwloadLog;
 import com.winnovature.utils.utils.JsonUtility;
 
 import au.com.bytecode.opencsv.CSVReader;
@@ -27,7 +28,8 @@ import redis.clients.jedis.Jedis;
 
 public class CsvToExcelConvertor {
 
-	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
+	static LogDonwloadLog log =LogDonwloadLog.getInstance();
+//	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
 	private static final String className = "CsvToExcelConvertor";
 
 	int filesCount = 0;

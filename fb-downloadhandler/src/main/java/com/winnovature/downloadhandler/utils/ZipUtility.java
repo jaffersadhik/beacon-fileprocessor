@@ -7,12 +7,13 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import com.winnovature.logger.LogDonwloadLog;
 
 public class ZipUtility {
 
-	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
+	static LogDonwloadLog log =LogDonwloadLog.getInstance();
+
+//	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
 	private static final String className = "ZipUtility";
 
 	public static void archive(List<String> srcFiles, String targetFileName) throws Exception {

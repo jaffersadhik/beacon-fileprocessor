@@ -11,18 +11,18 @@ import javax.servlet.annotation.WebServlet;
 
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.downloadhandler.consumers.CsvToExcelConvertionRequestConsumer;
 import com.winnovature.downloadhandler.consumers.PollerDownloadReq;
 import com.winnovature.downloadhandler.singletons.DownloadHandlerPropertiesTon;
-import com.winnovature.downloadhandler.utils.Constants;
+import com.winnovature.logger.LogDonwloadLog;
 
 @WebServlet(name = "ServletInitializer", loadOnStartup = 1)
 public class ServletInitializer extends GenericServlet implements Servlet {
 	private static final long serialVersionUID = 1L;
-	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
+//	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
+	static LogDonwloadLog log =LogDonwloadLog.getInstance();
+
 	private static final String className = "[ServletInitializer]";
 	PropertiesConfiguration propertiesConfiguration = null;
 	PollerDownloadReq pollerDownladReq = null;

@@ -8,15 +8,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import com.winnovature.downloadhandler.utils.Constants;
+import com.winnovature.logger.LogDonwloadLog;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 import com.winnovature.utils.singletons.ConnectionFactoryForCMDB;
 
 public class GenericDAO {
-	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
+	static LogDonwloadLog log =LogDonwloadLog.getInstance();
+
+	//static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
 	private static final String className = "[GenericDAO]";
 	
 	public Map<String, RedisServerDetailsBean> selectRedisServerDetailsAsMap() throws Exception {

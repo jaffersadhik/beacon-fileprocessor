@@ -4,19 +4,19 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.configuration.PropertiesConfiguration;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.downloadhandler.daos.DownloadReqDAO;
 //import com.winnovature.campaignfinisher.daos.UpdateCampaignFilesCompletedDAO;
 import com.winnovature.downloadhandler.singletons.DownloadHandlerPropertiesTon;
 import com.winnovature.downloadhandler.utils.Constants;
+import com.winnovature.logger.LogDonwloadLog;
 import com.winnovature.utils.utils.HeartBeatMonitoring;
 import com.winnovature.utils.utils.Utility;
 
 public class PollerDownloadReq extends Thread {
 
-	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
+//	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
+	static LogDonwloadLog log =LogDonwloadLog.getInstance();
 
 	PropertiesConfiguration prop = null;
 

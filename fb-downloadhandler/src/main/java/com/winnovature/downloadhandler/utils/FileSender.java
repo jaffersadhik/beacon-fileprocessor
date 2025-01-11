@@ -6,13 +6,16 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.downloadhandler.singletons.RedisConnectionTon;
+import com.winnovature.logger.LogDonwloadLog;
 import com.winnovature.utils.utils.JsonUtility;
 
 import redis.clients.jedis.Jedis;
 
 public class FileSender {
 
-	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
+	static LogDonwloadLog log =LogDonwloadLog.getInstance();
+
+//	static Log log = LogFactory.getLog(Constants.DownloadHandlerLogger);
 	private static final String className = "[FileSender]";
 
 	public static boolean sendToFileQueue(Map<String, String> map, String queueName) throws Exception {
