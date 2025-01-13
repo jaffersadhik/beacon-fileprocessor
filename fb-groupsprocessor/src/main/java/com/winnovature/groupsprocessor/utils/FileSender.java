@@ -2,10 +2,8 @@ package com.winnovature.groupsprocessor.utils;
 
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.winnovature.groupsprocessor.singletons.RedisConnectionTon;
+import com.winnovature.logger.GTPLog;
 import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.singletons.ConfigParamsTon;
 import com.winnovature.utils.utils.JsonUtility;
@@ -61,6 +59,9 @@ public class FileSender {
 					+ "] :" + (sent == true ? "Success." : "Failed."));
 			log.debug(className + methodName + " End.");
 		}
+		
+		GTPLog.getInstance().debug(className + methodName + " HO status for tagid[" + map.get("TAGID") + "] to Queue[" + queueName
+					+ "] :" + (sent == true ? "Success." : "Failed."));
 		return sent;
 	}
 

@@ -20,6 +20,7 @@ import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
 import com.winnovature.groupsprocessor.singletons.RedisConnectionTon;
 import com.winnovature.groupsprocessor.singletons.RedisQueueSender;
 import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.logger.GCLog;
 import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.dtos.FileDataBean;
 import com.winnovature.utils.dtos.SendSMSTypes;
@@ -100,6 +101,8 @@ public class MasterFileSplitHandler {
 						// insert split files into group_file_splits and update master record as
 						// inprocess.
 						groupsMasterDAO.insertSplitDetailsInGroupFileSplits(lstSplitFiles, requestMap);
+						
+						GCLog.getInstance().log(" lstSplitFiles : "+ lstSplitFiles +" requestMap : "+requestMap);
 					}
 					requestMap.put("delimiter", configMap.get(com.winnovature.utils.utils.Constants.SPLIT_FILE_DELIMITER));
 					activity.setChildFiles(lstSplitFiles);
@@ -111,18 +114,30 @@ public class MasterFileSplitHandler {
 					requestMap.put("total", String.valueOf(total));
 				} catch (FileNotFoundException fnfe) {
 					log.error(className + methodName + "FileNotFoundException: ", fnfe);
+					GCLog.getInstance().error("requestMap : "+requestMap + " FileNotFoundException ",fnfe);
 					try {
 						groupsMasterDAO.updateCampaignStatus(requestMap.get("gm_id"), requestMap.get("gf_id"),
 								Constants.PROCESS_STATUS_FAILED, "FileNotFoundException in GroupsProcessor", maxRetryCount);
+						GCLog.getInstance().debug("make : "+ Constants.PROCESS_STATUS_FAILED +" requestMap : "+requestMap);
+
 					} catch (Exception e2) {
 						// if update status failed in DB , log in a separate logger
 						log.error(className + methodName
 								+ "FileNotFoundException in GroupsProcessor and Db back update status [id:"
 								+ requestMap.get("gm_id") + " total:" + requestMap.get("total") + " ] Exception:",
 								fnfe);
+						
+						GCLog.getInstance().error(className + methodName
+								+ "FileNotFoundException in GroupsProcessor and Db back update status [id:"
+								+ requestMap.get("gm_id") + " total:" + requestMap.get("total") + " ] Exception:",
+								fnfe);
+
 					}
 					return;
 				} catch (Exception e) {
+					GCLog.getInstance().error(className + methodName
+							+ " unable to split files OR convert to txt. So HO back to GroupQ gm_id: "
+							+ requestMap.get("gm_id"), e);
 					log.error(className + methodName
 							+ " unable to split files OR convert to txt. So HO back to GroupQ gm_id: "
 							+ requestMap.get("gm_id"), e);
@@ -234,11 +249,16 @@ public class MasterFileSplitHandler {
 
 				if (log.isDebugEnabled())
 					log.debug(className + methodName + " FileSender-request sent-" + json);
+				GCLog.getInstance().debug(className + methodName + " FileSender-request sent-" + json);
+					
 			} else {
+				
+				GCLog.getInstance().debug("make : "+ Constants.PROCESS_STATUS_FAILED+" requestMap : "+requestMap);
 				dao.updateCampaignStatus(requestMap.get("gm_id"),requestMap.get("gf_id"),Constants.PROCESS_STATUS_FAILED, "GroupQ HO failed in GroupsProcessor", maxRetryCount);
 			}
 		} catch (Exception e) {
 			log.error(className + methodName + "Exception: ", e);
+			GCLog.getInstance().error(className + methodName + "Exception: ", e);
 			// if push to GroupQ failed, update status as failed in groups table
 			try {
 				dao.updateCampaignStatus(requestMap.get("gm_id"),requestMap.get("gf_id"),Constants.PROCESS_STATUS_FAILED, "GroupQ HO failed in GroupsProcessor", maxRetryCount);
@@ -246,6 +266,9 @@ public class MasterFileSplitHandler {
 				// if update status failed in DB , log in a separate logger
 				log.error(className + methodName + "GroupQ HO failed in GroupsProcessor and Db back update status [id:"
 						+ requestMap.get("gm_id") + " total:" + requestMap.get("total") + " ] Exception:", e2);
+				GCLog.getInstance().error(className + methodName + "GroupQ HO failed in GroupsProcessor and Db back update status [id:"
+						+ requestMap.get("gm_id") + " total:" + requestMap.get("total") + " ] Exception:", e2);
+
 			}
 		} finally {
 			if (con != null)

@@ -20,6 +20,7 @@ import org.apache.commons.logging.LogFactory;
 import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
 import com.winnovature.groupsprocessor.utils.Constants;
 import com.winnovature.groupsprocessor.utils.FileSender;
+import com.winnovature.logger.GTPLog;
 import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.dtos.SplitFileData;
 import com.winnovature.utils.singletons.ConnectionFactoryForCMDB;
@@ -103,7 +104,11 @@ public class GroupsMasterDAO {
 				if (log.isDebugEnabled())
 					log.debug(className + methodName + " No request found with matching criteria, sleeping for "
 							+ sleepTime + " milli seconds.");
+				GTPLog.getInstance().log(className + methodName + " No request found with matching criteria, sleeping for "
+						+ sleepTime + " milli seconds.");
 				consumerSleep(sleepTime);
+
+
 			}
 
 			while (requestsList.size() > 0) {
@@ -118,6 +123,8 @@ public class GroupsMasterDAO {
 						} catch (Exception e) {
 							updateGroupsRequestStatus(groupFileInfo, Constants.PROCESS_STATUS_FAILED, instanceId,
 									"GroupQ HO Failed");
+							GTPLog.getInstance().error("make : "+Constants.PROCESS_STATUS_FAILED+" groupFileInfo : "+groupFileInfo,e);
+
 						}
 					} else {
 						it.remove();
@@ -135,12 +142,16 @@ public class GroupsMasterDAO {
 	public void handoverToRedis(Map<String, String> groupFileInfo, String queueName, String reason, String instanceId)
 			throws Exception {
 		// update master record status as inprocess
+		GTPLog.getInstance().debug("make : "+Constants.PROCESS_STATUS_INPROGRESS+" groupFileInfo : "+groupFileInfo);
+
 		updateGroupsRequestStatus(groupFileInfo, Constants.PROCESS_STATUS_INPROGRESS, instanceId, null);
 		// HO to FileSplitQ
 		boolean fileSenderStatus = FileSender.sendToFileQueue(groupFileInfo, queueName);
 		// if HO to redis failed update status=FAILED
 		if (!fileSenderStatus) {
+			
 			updateGroupsRequestStatus(groupFileInfo, Constants.PROCESS_STATUS_FAILED, instanceId, reason);
+			GTPLog.getInstance().debug("make : "+Constants.PROCESS_STATUS_FAILED+" groupFileInfo : "+groupFileInfo);
 		}
 	}
 

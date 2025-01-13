@@ -11,6 +11,7 @@ import org.apache.commons.logging.LogFactory;
 import com.winnovature.groupsprocessor.daos.GroupsMasterDAO;
 import com.winnovature.groupsprocessor.singletons.GroupsProcessorPropertiesTon;
 import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.logger.GTPLog;
 import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.singletons.ConfigParamsTon;
 import com.winnovature.utils.utils.HeartBeatMonitoring;
@@ -58,6 +59,8 @@ public class GroupsMasterPoller extends Thread {
 	}
 
 	private void poll() throws Exception {
+		
+		GTPLog.getInstance().log("poll() ");
 		Map<String, String> configMap = null;
 		String groupQueueName = null;
 		String maxRetryCount = null;

@@ -11,6 +11,7 @@ import org.apache.commons.logging.LogFactory;
 import com.winnovature.groupsprocessor.handlers.MasterFileSplitHandler;
 import com.winnovature.groupsprocessor.singletons.RedisConnectionFactory;
 import com.winnovature.groupsprocessor.utils.Constants;
+import com.winnovature.logger.GCLog;
 import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 import com.winnovature.utils.singletons.ConfigParamsTon;
@@ -46,6 +47,8 @@ public class GroupsQConsumer extends Thread {
 				// HeartBeat changes Start
 				String timeStampAsString = Utility.getTimestampAsString();
 
+				GCLog.getInstance().debug( " run() ");
+				
 				new HeartBeatMonitoring().pushConsumersHeartBeat("FP-GroupsProcessor", "GroupsQConsumer", instanceId,
 						this.getName(), timeStampAsString);
 				// End of HeartBeat changes
@@ -73,6 +76,9 @@ public class GroupsQConsumer extends Thread {
 
 							// No data found let consumer rest for some time
 							log.debug("No data found let consumer rest for sleepTime : "+sleepTime );
+							
+							GCLog.getInstance().debug("No data found let consumer rest for sleepTime : "+sleepTime);
+							
 							consumerSleep(sleepTime);
 						} else {
 							Map<String, String> map = new JsonUtility().convertJsonStringToMap(groupDetailsJSON);
@@ -83,13 +89,19 @@ public class GroupsQConsumer extends Thread {
 										+ "] and processing business logic");
 							}
 
+							GCLog.getInstance().debug("map data found : "+map);
+
 							new MasterFileSplitHandler(map, queueName).handleMasterRecords();
 							// Jedis con close should be the last statement
 							if (con != null) {
 								con.close();
 							}
 						}
-					} // end of redis connection not null
+					} // end of redis connection not null{
+					else {
+						GCLog.getInstance().debug( " run() con is null");
+
+					}
 
 				} catch (Exception e) {
 					log.error(className + " [run] : " + this.getName() + " GroupsQConsumer exception", e);
