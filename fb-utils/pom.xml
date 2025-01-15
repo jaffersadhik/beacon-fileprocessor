@@ -13,7 +13,7 @@
 			<artifactId>fb-logger</artifactId>
 			<version>1.0</version>
 		</dependency>
-		x
+		
 		<dependency>
 			<groupId>beacon-fileprocessor</groupId>
 			<artifactId>thirtypartyjar</artifactId>
