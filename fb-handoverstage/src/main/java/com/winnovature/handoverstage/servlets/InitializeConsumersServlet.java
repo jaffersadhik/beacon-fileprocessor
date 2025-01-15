@@ -26,6 +26,7 @@ import com.winnovature.handoverstage.utils.Constants;
 import com.winnovature.logger.HandoverStageLog;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 import com.winnovature.utils.singletons.ConfigParamsTon;
+import com.winnovature.utils.utils.App;
 
 public class InitializeConsumersServlet extends GenericServlet implements Servlet {
 	private static final long serialVersionUID = 1L;
@@ -44,7 +45,8 @@ public class InitializeConsumersServlet extends GenericServlet implements Servle
 	public void init() throws ServletException {
 		super.init();
 
-	
+		App.createfolder();
+
 		HandoverStageLog.getInstance().debug(className+" init() ");
 
 			try {

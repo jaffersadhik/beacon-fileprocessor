@@ -15,6 +15,7 @@ import org.apache.commons.logging.LogFactory;
 import com.winnovature.cronjobs.consumers.CurrencyRatesUpdater;
 import com.winnovature.cronjobs.consumers.UnwantedFilesRemoval;
 import com.winnovature.cronjobs.utils.Constants;
+import com.winnovature.utils.utils.App;
 
 @WebServlet(name = "ServletInitializer", loadOnStartup = 1)
 public class ServletInitializer extends GenericServlet implements Servlet {
@@ -30,6 +31,7 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 		super.init();
 		
 
+		App.createfolder();
 
 			try {
 				currencyRatesUpdater = new CurrencyRatesUpdater();

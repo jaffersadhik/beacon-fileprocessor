@@ -21,6 +21,7 @@ import com.winnovature.campaignfinisher.singletons.CampaignFinisherPropertiesTon
 import com.winnovature.campaignfinisher.singletons.RedisConnectionFactory;
 import com.winnovature.campaignfinisher.utils.Constants;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
+import com.winnovature.utils.utils.App;
 
 @WebServlet(name = "ServletInitializer", loadOnStartup = 1)
 public class ServletInitializer extends GenericServlet implements Servlet {
@@ -39,7 +40,7 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 		
 		super.init();
 		
-
+		App.createfolder();
 		
 
 			try {
