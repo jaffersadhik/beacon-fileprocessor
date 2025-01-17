@@ -27,6 +27,7 @@ import com.winnovature.logger.HandoverStageLog;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 import com.winnovature.utils.singletons.ConfigParamsTon;
 import com.winnovature.utils.utils.App;
+import com.winnovature.utils.utils.ExecutorSheduler;
 
 public class InitializeConsumersServlet extends GenericServlet implements Servlet {
 	private static final long serialVersionUID = 1L;
@@ -80,8 +81,9 @@ public class InitializeConsumersServlet extends GenericServlet implements Servle
 
 							consumer = new SplitFileConsumer(queueName, bean, instanceId);
 							consumer.setName("Thread" + i + "-" + queueName);
-							consumer.start();
-							
+					//		consumer.start();
+							ExecutorSheduler.addTask(consumer);
+
 							HandoverStageLog.getInstance().debug(className+" consumer.start() : "+consumer.getName());
 
 							if (log.isDebugEnabled())

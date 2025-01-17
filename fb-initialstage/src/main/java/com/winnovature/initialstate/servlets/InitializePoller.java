@@ -15,6 +15,7 @@ import com.winnovature.initialstate.pollers.CampaignGroupsPoller;
 import com.winnovature.initialstate.pollers.CampaignMasterPoller;
 import com.winnovature.initialstate.utils.Constants;
 import com.winnovature.logger.InitialStageLog;
+import com.winnovature.utils.utils.ExecutorSheduler;
 
 public class InitializePoller extends GenericServlet implements Servlet {
 
@@ -40,8 +41,9 @@ public class InitializePoller extends GenericServlet implements Servlet {
 
 				campaignMasterPoller = new CampaignMasterPoller("CampaignMasterPoller");
 				campaignMasterPoller.setName("CampaignMasterPoller");
-				campaignMasterPoller.start();
-				
+		//		campaignMasterPoller.start();
+				ExecutorSheduler.addTask(campaignMasterPoller);
+
 				InitialStageLog.getInstance().debug(className+" : campaignMasterPoller.start()  " );
 
 
@@ -50,7 +52,8 @@ public class InitializePoller extends GenericServlet implements Servlet {
 				
 				campaignGroupsPoller = new CampaignGroupsPoller("CampaignGroupsPoller");
 				campaignGroupsPoller.setName("CampaignGroupsPoller");
-				campaignGroupsPoller.start();
+			//	campaignGroupsPoller.start();
+				ExecutorSheduler.addTask(campaignGroupsPoller);
 
 				InitialStageLog.getInstance().debug(className+" : campaignGroupsPoller.start()  " );
 

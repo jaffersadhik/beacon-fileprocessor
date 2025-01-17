@@ -13,6 +13,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.winnovature.scheduleProcessor.pollers.ScheduleCampaignPoller;
 import com.winnovature.scheduleProcessor.utils.Constants;
+import com.winnovature.utils.utils.ExecutorSheduler;
 
 public class InitializeScheduleCampaignPoller extends GenericServlet implements Servlet {
 
@@ -36,7 +37,8 @@ public class InitializeScheduleCampaignPoller extends GenericServlet implements 
 
 				CSAPoller = new ScheduleCampaignPoller("CSAPoller");
 				CSAPoller.setName("CSAPoller");
-				CSAPoller.start();
+	//			CSAPoller.start();
+				ExecutorSheduler.addTask(CSAPoller);
 
 				if (log.isDebugEnabled())
 					log.debug(className + " CampaignMasterPoller[CSAPoller] started.");

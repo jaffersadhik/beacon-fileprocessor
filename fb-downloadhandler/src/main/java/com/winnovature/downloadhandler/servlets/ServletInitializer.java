@@ -16,6 +16,7 @@ import com.winnovature.downloadhandler.consumers.CsvToExcelConvertionRequestCons
 import com.winnovature.downloadhandler.consumers.PollerDownloadReq;
 import com.winnovature.downloadhandler.singletons.DownloadHandlerPropertiesTon;
 import com.winnovature.logger.LogDonwloadLog;
+import com.winnovature.utils.utils.ExecutorSheduler;
 
 @WebServlet(name = "ServletInitializer", loadOnStartup = 1)
 public class ServletInitializer extends GenericServlet implements Servlet {
@@ -52,14 +53,18 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 				if (isPollerDownloadReqRequired) {
 					pollerDownladReq = new PollerDownloadReq();
 					pollerDownladReq.setName("PollerDownladReq");
-					pollerDownladReq.start();
+				//	pollerDownladReq.start();
+					ExecutorSheduler.addTask(pollerDownladReq);
+
 				}
 
 				int consumersCount = propertiesConfiguration.getInt("csv.excel.convertion.consumers.count", 5);
 				for (int i = 0; i < consumersCount; i++) {
 					csvToExcelConvertor = new CsvToExcelConvertionRequestConsumer();
 					csvToExcelConvertor.setName("CsvToExcelConvertionRequestConsumer" + (i + 1));
-					csvToExcelConvertor.start();
+			//		csvToExcelConvertor.start();
+					ExecutorSheduler.addTask(csvToExcelConvertor);
+
 				}
 
 			} catch (Exception e) {

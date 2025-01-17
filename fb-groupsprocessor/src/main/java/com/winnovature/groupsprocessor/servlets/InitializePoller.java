@@ -26,6 +26,7 @@ import com.winnovature.groupsprocessor.singletons.RedisConnectionTon;
 import com.winnovature.groupsprocessor.utils.Constants;
 import com.winnovature.logger.GroupProcessorLog;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
+import com.winnovature.utils.utils.ExecutorSheduler;
 
 @WebServlet(name = "InitializePoller", loadOnStartup = 1)
 public class InitializePoller extends GenericServlet implements Servlet {
@@ -65,7 +66,9 @@ public class InitializePoller extends GenericServlet implements Servlet {
 				if (runGroupsPoller) {
 					groupsMasterPoller = new GroupsMasterPoller("GroupsMasterPoller");
 					groupsMasterPoller.setName("GroupsMasterPoller");
-					groupsMasterPoller.start();
+				//	groupsMasterPoller.start();
+					ExecutorSheduler.addTask(groupsMasterPoller);
+
 					if (log.isDebugEnabled()) {
 						log.debug(className + " GroupsMasterPoller started.");
 					}
@@ -83,7 +86,9 @@ public class InitializePoller extends GenericServlet implements Servlet {
 					for (int i = 0; i < groupFileConsumersPerRedisServer; i++) {
 						groupsQConsumer = new GroupsQConsumer(bean, instanceId);
 						groupsQConsumer.setName("Thread" + (i + 1) + "-" + "GroupsQConsumer");
-						groupsQConsumer.start();
+					//	groupsQConsumer.start();
+						ExecutorSheduler.addTask(groupsQConsumer);
+
 						if (log.isDebugEnabled())
 							log.debug("[InitializePoller.init()] >>>>>> STARTING GroupsQConsumer" + (i + 1) + " ThreadName:"
 									+ groupsQConsumer.getName() + " bean:" + bean.getIpAddress());
@@ -100,7 +105,9 @@ public class InitializePoller extends GenericServlet implements Servlet {
 					for (int i = 0; i < groupSplitFileConsumersPerRedisServer; i++) {
 						groupsFileSplitQConsumer = new GroupsFileSplitQConsumer(bean, instanceId, batchSize);
 						groupsFileSplitQConsumer.setName("Thread" + (i + 1) + "-" + "GroupsFileSplitQConsumer");
-						groupsFileSplitQConsumer.start();
+				//		groupsFileSplitQConsumer.start();
+						ExecutorSheduler.addTask(groupsFileSplitQConsumer);
+
 						if (log.isDebugEnabled())
 							log.debug("[InitializePoller.init()] >>>>>> STARTING GroupsFileSplitQConsumer" + (i + 1)
 									+ " ThreadName:" + groupsFileSplitQConsumer.getName() + " bean:" + bean.getIpAddress());
@@ -111,21 +118,27 @@ public class InitializePoller extends GenericServlet implements Servlet {
 				if (runGroupsPoller) {
 					pollerGroupFilesCompleted = new PollerGroupFilesCompleted();
 					pollerGroupFilesCompleted.setName("PollerGroupFilesCompleted");
-					pollerGroupFilesCompleted.start();
+				//	pollerGroupFilesCompleted.start();
+					ExecutorSheduler.addTask(pollerGroupFilesCompleted);
+
 					if (log.isDebugEnabled()) {
 						log.debug(className + " PollerGroupFilesCompleted started.");
 					}
 					
 					pollerGroupMasterCompleted = new PollerGroupMasterCompleted();
 					pollerGroupMasterCompleted.setName("PollerGroupMasterCompleted");
-					pollerGroupMasterCompleted.start();
+				//	pollerGroupMasterCompleted.start();
+					ExecutorSheduler.addTask(pollerGroupMasterCompleted);
+
 					if (log.isDebugEnabled()) {
 						log.debug(className + " PollerGroupMasterCompleted started.");
 					}
 					
 					pollerCampaignMasterCompleted = new PollerCampaignMasterCompleted();
 					pollerCampaignMasterCompleted.setName("PollerCampaignMasterCompleted");
-					pollerCampaignMasterCompleted.start();
+				//	pollerCampaignMasterCompleted.start();
+					ExecutorSheduler.addTask(pollerCampaignMasterCompleted);
+
 					if (log.isDebugEnabled()) {
 						log.debug(className + " PollerCampaignMasterCompleted started.");
 					}
@@ -141,7 +154,9 @@ public class InitializePoller extends GenericServlet implements Servlet {
 					for (int i = 0; i < groupsCampaignQConsumersPerRedisServer; i++) {
 						groupsCampaignQConsumer = new GroupsCampaignQConsumer(bean, instanceId);
 						groupsCampaignQConsumer.setName("Thread" + (i+1) + "-" + "GroupsCampaignQConsumer");
-						groupsCampaignQConsumer.start();
+					//	groupsCampaignQConsumer.start();
+						ExecutorSheduler.addTask(groupsCampaignQConsumer);
+
 						if (log.isDebugEnabled())
 							log.debug("[SplitStageServlet.init()] >>>>>> STARTING GroupsCampaignQConsumer[GroupsCampaignQ]  " + (i+1)
 									+ " ThreadName:" + groupsCampaignQConsumer.getName() + " bean:" + bean.getIpAddress());

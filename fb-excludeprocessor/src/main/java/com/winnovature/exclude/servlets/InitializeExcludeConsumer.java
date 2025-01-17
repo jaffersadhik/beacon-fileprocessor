@@ -23,6 +23,7 @@ import com.winnovature.exclude.singletons.RedisConnectionFactory;
 import com.winnovature.exclude.utils.Constants;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 import com.winnovature.utils.singletons.ConfigParamsTon;
+import com.winnovature.utils.utils.ExecutorSheduler;
 
 @WebServlet(name = "ExcludeConsumerInitializer", loadOnStartup = 1)
 public class InitializeExcludeConsumer extends GenericServlet implements Servlet {
@@ -71,7 +72,9 @@ public class InitializeExcludeConsumer extends GenericServlet implements Servlet
 						for (int i = 0; i < Integer.parseInt(noofconsumer); i++) {
 							consumer = new ExcludeConsumer(queueName, bean, instanceId);
 							consumer.setName("Thread" + i + "-" + queueName);
-							consumer.start();
+						//	consumer.start();
+							ExecutorSheduler.addTask(consumer);
+
 							log.info(className
 									+ "[init] >>>>>> STARTING ExcludeConsumer  "
 									+ i + " QUEUE NAME " + queueName + " bean:"

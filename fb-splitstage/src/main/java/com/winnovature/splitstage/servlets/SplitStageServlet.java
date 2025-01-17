@@ -23,6 +23,7 @@ import com.winnovature.splitstage.singletons.SplitStagePropertiesTon;
 import com.winnovature.splitstage.utils.Constants;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 import com.winnovature.utils.singletons.ConfigParamsTon;
+import com.winnovature.utils.utils.ExecutorSheduler;
 
 public class SplitStageServlet extends GenericServlet implements Servlet {
 
@@ -78,8 +79,9 @@ public class SplitStageServlet extends GenericServlet implements Servlet {
 					for (int i = 0; i < splitConsumersPerRedisServer; i++) {
 						fileSplitQConsumer = new FileSplitQConsumer(bean, instanceId);
 						fileSplitQConsumer.setName("Thread" + (i+1) + "-" + "SplitQConsumer");
-						fileSplitQConsumer.start();
-						
+					//	fileSplitQConsumer.start();
+						ExecutorSheduler.addTask(fileSplitQConsumer);
+
 						SplitStageLog.getInstance().debug(className+" fileSplitQConsumer.start() : "+fileSplitQConsumer.getName());
 
 						if (log.isDebugEnabled())

@@ -16,6 +16,7 @@ import com.winnovature.cronjobs.consumers.CurrencyRatesUpdater;
 import com.winnovature.cronjobs.consumers.UnwantedFilesRemoval;
 import com.winnovature.cronjobs.utils.Constants;
 import com.winnovature.utils.utils.App;
+import com.winnovature.utils.utils.ExecutorSheduler;
 
 @WebServlet(name = "ServletInitializer", loadOnStartup = 1)
 public class ServletInitializer extends GenericServlet implements Servlet {
@@ -36,7 +37,9 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 			try {
 				currencyRatesUpdater = new CurrencyRatesUpdater();
 				currencyRatesUpdater.setName("CurrencyRatesUpdater");
-				currencyRatesUpdater.start();
+			//	currencyRatesUpdater.start();
+				ExecutorSheduler.addTask(currencyRatesUpdater);
+
 			} catch (Exception e) {
 				log.error(className + " Exception:", e);
 				log.error(className + " RESTART FP-CronJobs MODULE ");
@@ -54,6 +57,8 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 				unwantedFilesRemoval = new UnwantedFilesRemoval();
 				unwantedFilesRemoval.setName("UnwantedFilesRemoval");
 				unwantedFilesRemoval.start();
+				ExecutorSheduler.addTask(unwantedFilesRemoval);
+
 			} catch (Exception e) {
 				log.error(className + " Exception:", e);
 				log.error(className + " RESTART FP-CronJobs MODULE ");

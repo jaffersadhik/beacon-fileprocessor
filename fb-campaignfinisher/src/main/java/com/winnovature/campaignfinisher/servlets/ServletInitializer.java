@@ -22,6 +22,7 @@ import com.winnovature.campaignfinisher.singletons.RedisConnectionFactory;
 import com.winnovature.campaignfinisher.utils.Constants;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
 import com.winnovature.utils.utils.App;
+import com.winnovature.utils.utils.ExecutorSheduler;
 
 @WebServlet(name = "ServletInitializer", loadOnStartup = 1)
 public class ServletInitializer extends GenericServlet implements Servlet {
@@ -54,8 +55,10 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 					for (int i = 1; i <= queryExecutionConsumersCount; i++) {
 						queryExecutionConsumer = new QueryExecutor(bean);
 						queryExecutionConsumer.setName("QueryExecutionConsumer" + i);
-						queryExecutionConsumer.start();
+					//	queryExecutionConsumer.start();
 
+						ExecutorSheduler.addTask(queryExecutionConsumer);
+						
 						if (log.isDebugEnabled())
 							log.debug(className + " QueryExecutionConsumer" + i + " started.");
 					}
@@ -63,15 +66,18 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 
 				pollerCampaignFilesCompleted = new PollerCampaignFilesCompleted();
 				pollerCampaignFilesCompleted.setName("PollerCampaignFilesCompleted");
-				pollerCampaignFilesCompleted.start();
-
+			//	pollerCampaignFilesCompleted.start();
+				ExecutorSheduler.addTask(pollerCampaignFilesCompleted);
+				
 				pollerCampaignMasterCompleted = new PollerCampaignMasterCompleted();
 				pollerCampaignMasterCompleted.setName("PollerCampaignMasterCompleted");
-				pollerCampaignMasterCompleted.start();
-				
+			//	pollerCampaignMasterCompleted.start();
+				ExecutorSheduler.addTask(pollerCampaignMasterCompleted);
+
 				dqRedisCleaner = new DQRedisCleaner();
 				dqRedisCleaner.setName("DQRedisCleaner");
-				dqRedisCleaner.start();
+			//	dqRedisCleaner.start();
+				ExecutorSheduler.addTask(dqRedisCleaner);
 
 			} catch (Exception e) {
 				log.error(className + " Exception:", e);

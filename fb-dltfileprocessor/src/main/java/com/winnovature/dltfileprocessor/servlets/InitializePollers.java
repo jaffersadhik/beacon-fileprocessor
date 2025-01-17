@@ -22,6 +22,7 @@ import com.winnovature.dltfileprocessor.singletons.RedisConnectionTon;
 import com.winnovature.dltfileprocessor.utils.Constants;
 import com.winnovature.logger.DLTFileLog;
 import com.winnovature.utils.dtos.RedisServerDetailsBean;
+import com.winnovature.utils.utils.ExecutorSheduler;
 
 @WebServlet(name = "InitializePollers", loadOnStartup = 1)
 public class InitializePollers extends GenericServlet implements Servlet {
@@ -58,14 +59,18 @@ public class InitializePollers extends GenericServlet implements Servlet {
 				if (runDltTemplateRequestPoller) {
 					dltTemplateRequestPoller = new DltTemplateRequestPoller("dltTemplateRequestPoller");
 					dltTemplateRequestPoller.setName("dltTemplateRequestPoller");
-					dltTemplateRequestPoller.start();
+				//	dltTemplateRequestPoller.start();
+					ExecutorSheduler.addTask(dltTemplateRequestPoller);
+
 					if (log.isDebugEnabled()) {
 						log.debug(className + " dltTemplateRequestPoller started.");
 					}
 					
 					dltTemplateRequestCompletionPoller = new DltTemplateRequestCompletionPoller();
 					dltTemplateRequestCompletionPoller.setName("DltTemplateRequestCompletionPoller");
-					dltTemplateRequestCompletionPoller.start();
+			//		dltTemplateRequestCompletionPoller.start();
+					ExecutorSheduler.addTask(dltTemplateRequestCompletionPoller);
+
 					if (log.isDebugEnabled()) {
 						log.debug(className + " DltTemplateRequestCompletionPoller started.");
 					}
@@ -92,7 +97,9 @@ public class InitializePollers extends GenericServlet implements Servlet {
 						for (int i = 0; i < dltFileConsumersPerRedisServer; i++) {
 							dltFileQConsumer = new DltFileQConsumer(bean, instanceId);
 							dltFileQConsumer.setName("Thread" + (i+1) + "-" + "DltFileQConsumer");
-							dltFileQConsumer.start();
+						//	dltFileQConsumer.start();
+							ExecutorSheduler.addTask(dltFileQConsumer);
+
 							if (log.isDebugEnabled())
 								log.debug("[SplitStageServlet.init()] >>>>>> STARTING DltFileQConsumer  " + (i+1)
 										+ " ThreadName:" + dltFileQConsumer.getName() + " bean:" + bean.getIpAddress());
