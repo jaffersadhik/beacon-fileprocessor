@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.lang.StringUtils;
 
+import com.itextos.beacon.commonlib.prometheusmetricsutil.PrometheusMetrics;
 import com.winnovature.dltfileprocessor.consumers.DltFileQConsumer;
 import com.winnovature.dltfileprocessor.pollers.DltTemplateRequestCompletionPoller;
 import com.winnovature.dltfileprocessor.pollers.DltTemplateRequestPoller;
@@ -107,6 +108,9 @@ public class InitializePollers extends GenericServlet implements Servlet {
 					}
 				}
 
+				
+				PrometheusMetrics.registerServer();
+		        PrometheusMetrics.registerApiMetrics();
 			} catch (Exception e) {
 				log.error(className + " Exception:", e);
 				log.error(className + " RESTART FP-DltFileProcessor MODULE ");

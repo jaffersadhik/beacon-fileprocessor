@@ -16,6 +16,7 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.itextos.beacon.commonlib.prometheusmetricsutil.PrometheusMetrics;
 import com.winnovature.logger.SplitStageLog;
 import com.winnovature.splitstage.consumers.FileSplitQConsumer;
 import com.winnovature.splitstage.singletons.RedisConnectionTon;
@@ -91,6 +92,9 @@ public class SplitStageServlet extends GenericServlet implements Servlet {
 
 				} // end of REDIS servers iteration
 
+				
+				PrometheusMetrics.registerServer();
+		        PrometheusMetrics.registerApiMetrics();
 			} catch (Exception e) {
 				log.error(className + methodName + " >>>> Exception: ", e);
 				log.error(className + methodName + " >>>> Please restart SplitStage module. ");

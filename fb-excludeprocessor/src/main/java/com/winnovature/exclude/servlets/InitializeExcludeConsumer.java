@@ -17,6 +17,7 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.itextos.beacon.commonlib.prometheusmetricsutil.PrometheusMetrics;
 import com.winnovature.exclude.consumers.ExcludeConsumer;
 import com.winnovature.exclude.singletons.ExcludeProcessorPropertiesTon;
 import com.winnovature.exclude.singletons.RedisConnectionFactory;
@@ -87,6 +88,9 @@ public class InitializeExcludeConsumer extends GenericServlet implements Servlet
 					}
 
 				}
+				
+				PrometheusMetrics.registerServer();
+		        PrometheusMetrics.registerApiMetrics();
 			} catch (Exception e) {
 				log.error(className + "[init]  Exception:", e);
 			}

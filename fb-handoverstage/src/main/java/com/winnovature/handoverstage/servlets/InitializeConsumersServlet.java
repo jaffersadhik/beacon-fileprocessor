@@ -18,6 +18,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.itextos.beacon.commonlib.constants.InterfaceType;
 import com.itextos.beacon.commonlib.messageidentifier.MessageIdentifier;
+import com.itextos.beacon.commonlib.prometheusmetricsutil.PrometheusMetrics;
 import com.itextos.beacon.http.interfacefallback.inmem.FallbackQReaper;
 import com.winnovature.handoverstage.consumers.SplitFileConsumer;
 import com.winnovature.handoverstage.singletons.HandoverStagePropertiesTon;
@@ -94,6 +95,9 @@ public class InitializeConsumersServlet extends GenericServlet implements Servle
 					}
 
 				}
+				
+				PrometheusMetrics.registerServer();
+		        PrometheusMetrics.registerApiMetrics();
 			} catch (Exception e) {
 				log.error(className + "[init]  Exception:", e);
 			}

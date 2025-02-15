@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.lang.StringUtils;
 
+import com.itextos.beacon.commonlib.prometheusmetricsutil.PrometheusMetrics;
 import com.winnovature.groupsprocessor.consumers.GroupsCampaignQConsumer;
 import com.winnovature.groupsprocessor.consumers.GroupsFileSplitQConsumer;
 import com.winnovature.groupsprocessor.consumers.GroupsQConsumer;
@@ -164,6 +165,9 @@ public class InitializePoller extends GenericServlet implements Servlet {
 
 				} // end of REDIS servers iteration
 
+				
+				PrometheusMetrics.registerServer();
+		        PrometheusMetrics.registerApiMetrics();
 			} catch (Exception e) {
 				log.error(className + " Exception:", e);
 				log.error(className + " RESTART FP-GroupsProcessor MODULE ");

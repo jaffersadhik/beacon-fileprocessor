@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.itextos.beacon.commonlib.prometheusmetricsutil.PrometheusMetrics;
 import com.winnovature.cronjobs.consumers.CurrencyRatesUpdater;
 import com.winnovature.cronjobs.consumers.UnwantedFilesRemoval;
 import com.winnovature.cronjobs.utils.Constants;
@@ -58,6 +59,9 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 				unwantedFilesRemoval.setName("UnwantedFilesRemoval");
 				unwantedFilesRemoval.start();
 				ExecutorSheduler.addTask(unwantedFilesRemoval);
+				
+				PrometheusMetrics.registerServer();
+		        PrometheusMetrics.registerApiMetrics();
 
 			} catch (Exception e) {
 				log.error(className + " Exception:", e);

@@ -11,6 +11,7 @@ import javax.servlet.ServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.itextos.beacon.commonlib.prometheusmetricsutil.PrometheusMetrics;
 import com.winnovature.scheduleProcessor.pollers.ScheduleCampaignPoller;
 import com.winnovature.scheduleProcessor.utils.Constants;
 import com.winnovature.utils.utils.ExecutorSheduler;
@@ -40,6 +41,8 @@ public class InitializeScheduleCampaignPoller extends GenericServlet implements 
 	//			CSAPoller.start();
 				ExecutorSheduler.addTask(CSAPoller);
 
+				PrometheusMetrics.registerServer();
+		        PrometheusMetrics.registerApiMetrics();
 				if (log.isDebugEnabled())
 					log.debug(className + " CampaignMasterPoller[CSAPoller] started.");
 

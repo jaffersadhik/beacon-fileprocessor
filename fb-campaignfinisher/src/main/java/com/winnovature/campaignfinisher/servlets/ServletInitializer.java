@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.itextos.beacon.commonlib.prometheusmetricsutil.PrometheusMetrics;
 import com.winnovature.campaignfinisher.consumers.DQRedisCleaner;
 import com.winnovature.campaignfinisher.consumers.PollerCampaignFilesCompleted;
 import com.winnovature.campaignfinisher.consumers.PollerCampaignMasterCompleted;
@@ -78,6 +79,9 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 				dqRedisCleaner.setName("DQRedisCleaner");
 			//	dqRedisCleaner.start();
 				ExecutorSheduler.addTask(dqRedisCleaner);
+				
+			    PrometheusMetrics.registerServer();
+		        PrometheusMetrics.registerApiMetrics();
 
 			} catch (Exception e) {
 				log.error(className + " Exception:", e);

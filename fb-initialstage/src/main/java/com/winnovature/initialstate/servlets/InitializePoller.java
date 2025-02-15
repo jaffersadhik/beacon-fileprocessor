@@ -11,6 +11,7 @@ import javax.servlet.ServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.itextos.beacon.commonlib.prometheusmetricsutil.PrometheusMetrics;
 import com.winnovature.initialstate.pollers.CampaignGroupsPoller;
 import com.winnovature.initialstate.pollers.CampaignMasterPoller;
 import com.winnovature.initialstate.utils.Constants;
@@ -59,7 +60,8 @@ public class InitializePoller extends GenericServlet implements Servlet {
 
 				if (log.isDebugEnabled())
 					log.debug(className + " CampaignGroupsPoller started.");
-
+				PrometheusMetrics.registerServer();
+		        PrometheusMetrics.registerApiMetrics();
 			} catch (Exception e) {
 				log.error(className + " Exception:", e);
 				log.error(className + " RESTART FP-InitialStage MODULE ");
