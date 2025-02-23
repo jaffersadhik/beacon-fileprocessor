@@ -80,8 +80,8 @@ public class SplitStageServlet extends GenericServlet implements Servlet {
 					for (int i = 0; i < splitConsumersPerRedisServer; i++) {
 						fileSplitQConsumer = new FileSplitQConsumer(bean, instanceId);
 						fileSplitQConsumer.setName("Thread" + (i+1) + "-" + "SplitQConsumer");
-					//	fileSplitQConsumer.start();
-						ExecutorSheduler.addTask(fileSplitQConsumer);
+						fileSplitQConsumer.start();
+					//	ExecutorSheduler.addTask(fileSplitQConsumer);
 
 						SplitStageLog.getInstance().debug(className+" fileSplitQConsumer.start() : "+fileSplitQConsumer.getName());
 

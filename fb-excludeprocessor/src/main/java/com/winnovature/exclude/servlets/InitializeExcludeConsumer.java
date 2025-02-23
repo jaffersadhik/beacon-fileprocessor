@@ -73,8 +73,8 @@ public class InitializeExcludeConsumer extends GenericServlet implements Servlet
 						for (int i = 0; i < Integer.parseInt(noofconsumer); i++) {
 							consumer = new ExcludeConsumer(queueName, bean, instanceId);
 							consumer.setName("Thread" + i + "-" + queueName);
-						//	consumer.start();
-							ExecutorSheduler.addTask(consumer);
+							consumer.start();
+						//	ExecutorSheduler.addTask(consumer);
 
 							log.info(className
 									+ "[init] >>>>>> STARTING ExcludeConsumer  "

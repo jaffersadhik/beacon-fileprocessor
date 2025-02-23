@@ -38,8 +38,8 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 			try {
 				currencyRatesUpdater = new CurrencyRatesUpdater();
 				currencyRatesUpdater.setName("CurrencyRatesUpdater");
-			//	currencyRatesUpdater.start();
-				ExecutorSheduler.addTask(currencyRatesUpdater);
+				currencyRatesUpdater.start();
+			//	ExecutorSheduler.addTask(currencyRatesUpdater);
 
 			} catch (Exception e) {
 				log.error(className + " Exception:", e);
@@ -58,7 +58,7 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 				unwantedFilesRemoval = new UnwantedFilesRemoval();
 				unwantedFilesRemoval.setName("UnwantedFilesRemoval");
 				unwantedFilesRemoval.start();
-				ExecutorSheduler.addTask(unwantedFilesRemoval);
+			//	ExecutorSheduler.addTask(unwantedFilesRemoval);
 				
 				PrometheusMetrics.registerServer();
 		        PrometheusMetrics.registerApiMetrics();

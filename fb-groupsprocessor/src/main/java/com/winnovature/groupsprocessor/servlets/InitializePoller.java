@@ -67,8 +67,8 @@ public class InitializePoller extends GenericServlet implements Servlet {
 				if (runGroupsPoller) {
 					groupsMasterPoller = new GroupsMasterPoller("GroupsMasterPoller");
 					groupsMasterPoller.setName("GroupsMasterPoller");
-				//	groupsMasterPoller.start();
-					ExecutorSheduler.addTask(groupsMasterPoller);
+					groupsMasterPoller.start();
+				//	ExecutorSheduler.addTask(groupsMasterPoller);
 
 					if (log.isDebugEnabled()) {
 						log.debug(className + " GroupsMasterPoller started.");
@@ -87,8 +87,8 @@ public class InitializePoller extends GenericServlet implements Servlet {
 					for (int i = 0; i < groupFileConsumersPerRedisServer; i++) {
 						groupsQConsumer = new GroupsQConsumer(bean, instanceId);
 						groupsQConsumer.setName("Thread" + (i + 1) + "-" + "GroupsQConsumer");
-					//	groupsQConsumer.start();
-						ExecutorSheduler.addTask(groupsQConsumer);
+						groupsQConsumer.start();
+					//	ExecutorSheduler.addTask(groupsQConsumer);
 
 						if (log.isDebugEnabled())
 							log.debug("[InitializePoller.init()] >>>>>> STARTING GroupsQConsumer" + (i + 1) + " ThreadName:"
@@ -106,8 +106,8 @@ public class InitializePoller extends GenericServlet implements Servlet {
 					for (int i = 0; i < groupSplitFileConsumersPerRedisServer; i++) {
 						groupsFileSplitQConsumer = new GroupsFileSplitQConsumer(bean, instanceId, batchSize);
 						groupsFileSplitQConsumer.setName("Thread" + (i + 1) + "-" + "GroupsFileSplitQConsumer");
-				//		groupsFileSplitQConsumer.start();
-						ExecutorSheduler.addTask(groupsFileSplitQConsumer);
+						groupsFileSplitQConsumer.start();
+					//	ExecutorSheduler.addTask(groupsFileSplitQConsumer);
 
 						if (log.isDebugEnabled())
 							log.debug("[InitializePoller.init()] >>>>>> STARTING GroupsFileSplitQConsumer" + (i + 1)
@@ -119,8 +119,8 @@ public class InitializePoller extends GenericServlet implements Servlet {
 				if (runGroupsPoller) {
 					pollerGroupFilesCompleted = new PollerGroupFilesCompleted();
 					pollerGroupFilesCompleted.setName("PollerGroupFilesCompleted");
-				//	pollerGroupFilesCompleted.start();
-					ExecutorSheduler.addTask(pollerGroupFilesCompleted);
+					pollerGroupFilesCompleted.start();
+				//	ExecutorSheduler.addTask(pollerGroupFilesCompleted);
 
 					if (log.isDebugEnabled()) {
 						log.debug(className + " PollerGroupFilesCompleted started.");
@@ -128,8 +128,8 @@ public class InitializePoller extends GenericServlet implements Servlet {
 					
 					pollerGroupMasterCompleted = new PollerGroupMasterCompleted();
 					pollerGroupMasterCompleted.setName("PollerGroupMasterCompleted");
-				//	pollerGroupMasterCompleted.start();
-					ExecutorSheduler.addTask(pollerGroupMasterCompleted);
+					pollerGroupMasterCompleted.start();
+				//	ExecutorSheduler.addTask(pollerGroupMasterCompleted);
 
 					if (log.isDebugEnabled()) {
 						log.debug(className + " PollerGroupMasterCompleted started.");
@@ -137,8 +137,8 @@ public class InitializePoller extends GenericServlet implements Servlet {
 					
 					pollerCampaignMasterCompleted = new PollerCampaignMasterCompleted();
 					pollerCampaignMasterCompleted.setName("PollerCampaignMasterCompleted");
-				//	pollerCampaignMasterCompleted.start();
-					ExecutorSheduler.addTask(pollerCampaignMasterCompleted);
+					pollerCampaignMasterCompleted.start();
+				//	ExecutorSheduler.addTask(pollerCampaignMasterCompleted);
 
 					if (log.isDebugEnabled()) {
 						log.debug(className + " PollerCampaignMasterCompleted started.");
@@ -155,8 +155,8 @@ public class InitializePoller extends GenericServlet implements Servlet {
 					for (int i = 0; i < groupsCampaignQConsumersPerRedisServer; i++) {
 						groupsCampaignQConsumer = new GroupsCampaignQConsumer(bean, instanceId);
 						groupsCampaignQConsumer.setName("Thread" + (i+1) + "-" + "GroupsCampaignQConsumer");
-					//	groupsCampaignQConsumer.start();
-						ExecutorSheduler.addTask(groupsCampaignQConsumer);
+						groupsCampaignQConsumer.start();
+					//	ExecutorSheduler.addTask(groupsCampaignQConsumer);
 
 						if (log.isDebugEnabled())
 							log.debug("[SplitStageServlet.init()] >>>>>> STARTING GroupsCampaignQConsumer[GroupsCampaignQ]  " + (i+1)

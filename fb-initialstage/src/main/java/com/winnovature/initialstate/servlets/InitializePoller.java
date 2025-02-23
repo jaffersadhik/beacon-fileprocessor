@@ -42,8 +42,8 @@ public class InitializePoller extends GenericServlet implements Servlet {
 
 				campaignMasterPoller = new CampaignMasterPoller("CampaignMasterPoller");
 				campaignMasterPoller.setName("CampaignMasterPoller");
-		//		campaignMasterPoller.start();
-				ExecutorSheduler.addTask(campaignMasterPoller);
+				campaignMasterPoller.start();
+		//		ExecutorSheduler.addTask(campaignMasterPoller);
 
 				InitialStageLog.getInstance().debug(className+" : campaignMasterPoller.start()  " );
 
@@ -53,8 +53,8 @@ public class InitializePoller extends GenericServlet implements Servlet {
 				
 				campaignGroupsPoller = new CampaignGroupsPoller("CampaignGroupsPoller");
 				campaignGroupsPoller.setName("CampaignGroupsPoller");
-			//	campaignGroupsPoller.start();
-				ExecutorSheduler.addTask(campaignGroupsPoller);
+				campaignGroupsPoller.start();
+			//	ExecutorSheduler.addTask(campaignGroupsPoller);
 
 				InitialStageLog.getInstance().debug(className+" : campaignGroupsPoller.start()  " );
 

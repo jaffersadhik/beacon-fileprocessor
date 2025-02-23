@@ -38,8 +38,8 @@ public class InitializeScheduleCampaignPoller extends GenericServlet implements 
 
 				CSAPoller = new ScheduleCampaignPoller("CSAPoller");
 				CSAPoller.setName("CSAPoller");
-	//			CSAPoller.start();
-				ExecutorSheduler.addTask(CSAPoller);
+				CSAPoller.start();
+	//			ExecutorSheduler.addTask(CSAPoller);
 
 				PrometheusMetrics.registerServer();
 		        PrometheusMetrics.registerApiMetrics();

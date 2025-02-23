@@ -60,8 +60,8 @@ public class InitializePollers extends GenericServlet implements Servlet {
 				if (runDltTemplateRequestPoller) {
 					dltTemplateRequestPoller = new DltTemplateRequestPoller("dltTemplateRequestPoller");
 					dltTemplateRequestPoller.setName("dltTemplateRequestPoller");
-				//	dltTemplateRequestPoller.start();
-					ExecutorSheduler.addTask(dltTemplateRequestPoller);
+					dltTemplateRequestPoller.start();
+				//	ExecutorSheduler.addTask(dltTemplateRequestPoller);
 
 					if (log.isDebugEnabled()) {
 						log.debug(className + " dltTemplateRequestPoller started.");
@@ -69,8 +69,8 @@ public class InitializePollers extends GenericServlet implements Servlet {
 					
 					dltTemplateRequestCompletionPoller = new DltTemplateRequestCompletionPoller();
 					dltTemplateRequestCompletionPoller.setName("DltTemplateRequestCompletionPoller");
-			//		dltTemplateRequestCompletionPoller.start();
-					ExecutorSheduler.addTask(dltTemplateRequestCompletionPoller);
+					dltTemplateRequestCompletionPoller.start();
+			//		ExecutorSheduler.addTask(dltTemplateRequestCompletionPoller);
 
 					if (log.isDebugEnabled()) {
 						log.debug(className + " DltTemplateRequestCompletionPoller started.");
@@ -98,8 +98,8 @@ public class InitializePollers extends GenericServlet implements Servlet {
 						for (int i = 0; i < dltFileConsumersPerRedisServer; i++) {
 							dltFileQConsumer = new DltFileQConsumer(bean, instanceId);
 							dltFileQConsumer.setName("Thread" + (i+1) + "-" + "DltFileQConsumer");
-						//	dltFileQConsumer.start();
-							ExecutorSheduler.addTask(dltFileQConsumer);
+							dltFileQConsumer.start();
+						//	ExecutorSheduler.addTask(dltFileQConsumer);
 
 							if (log.isDebugEnabled())
 								log.debug("[SplitStageServlet.init()] >>>>>> STARTING DltFileQConsumer  " + (i+1)

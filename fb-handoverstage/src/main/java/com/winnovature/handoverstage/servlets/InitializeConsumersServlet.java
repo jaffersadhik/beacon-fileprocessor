@@ -82,8 +82,8 @@ public class InitializeConsumersServlet extends GenericServlet implements Servle
 
 							consumer = new SplitFileConsumer(queueName, bean, instanceId);
 							consumer.setName("Thread" + i + "-" + queueName);
-					//		consumer.start();
-							ExecutorSheduler.addTask(consumer);
+							consumer.start();
+					//		ExecutorSheduler.addTask(consumer);
 
 							HandoverStageLog.getInstance().debug(className+" consumer.start() : "+consumer.getName());
 

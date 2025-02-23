@@ -54,8 +54,8 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 				if (isPollerDownloadReqRequired) {
 					pollerDownladReq = new PollerDownloadReq();
 					pollerDownladReq.setName("PollerDownladReq");
-				//	pollerDownladReq.start();
-					ExecutorSheduler.addTask(pollerDownladReq);
+					pollerDownladReq.start();
+				//	ExecutorSheduler.addTask(pollerDownladReq);
 
 				}
 
@@ -63,8 +63,8 @@ public class ServletInitializer extends GenericServlet implements Servlet {
 				for (int i = 0; i < consumersCount; i++) {
 					csvToExcelConvertor = new CsvToExcelConvertionRequestConsumer();
 					csvToExcelConvertor.setName("CsvToExcelConvertionRequestConsumer" + (i + 1));
-			//		csvToExcelConvertor.start();
-					ExecutorSheduler.addTask(csvToExcelConvertor);
+					csvToExcelConvertor.start();
+			//		ExecutorSheduler.addTask(csvToExcelConvertor);
 
 				}
 
